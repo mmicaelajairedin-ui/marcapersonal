@@ -798,6 +798,54 @@
     .final-cta { padding: 90px 20px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
+
+  /* HERO proof line */
+  .hero-proof {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .hero-proof .stars {
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+  .hero-proof .dot { opacity: 0.4; }
+
+  /* CTA reassurance microcopy */
+  .cta-reassurance {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    letter-spacing: 0.2px;
+  }
+  .cta-reassurance span { margin: 0 8px; opacity: 0.5; }
+
+  /* MOBILE sticky CTA */
+  .mobile-sticky-cta {
+    display: none;
+    position: fixed;
+    left: 12px; right: 12px; bottom: 12px;
+    z-index: 60;
+    padding: 14px 20px;
+    background: var(--accent);
+    color: var(--cream);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 14px;
+    box-shadow: var(--shadow-lg);
+  }
+  @media (max-width: 720px) {
+    .mobile-sticky-cta { display: block; }
+    body { padding-bottom: 80px; }
+  }
 </style>
 </head>
 <body>
@@ -813,6 +861,7 @@
   <div class="hero-grid">
     <div>
       <div class="hero-eyebrow">Mentoría 1:1 · Desde la mirada del recruiter</div>
+      <div class="hero-proof"><span class="stars">★★★★★</span><span>Testimonios 5.0</span><span class="dot">·</span><span>Mentorías en ES / EN</span></div>
       <h1>Si tenés experiencia y nadie te llama, <em>el problema no sos vos.</em></h1>
       <p class="hero-sub">Llevo 8 años decidiendo quién pasa a entrevista y quién no. Trabajo 1:1 con vos para reposicionar tu CV, tu LinkedIn y tu forma de entrevistar — en español o inglés — hasta que empiecen a llamarte.</p>
       <div class="hero-ctas">
@@ -822,6 +871,7 @@
         </a>
         <a href="#mentoria" class="btn-secondary">Cómo funciona →</a>
       </div>
+      <div class="cta-reassurance">30 min<span>·</span>Sin tarjeta<span>·</span>Sin compromiso</div>
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo-ring"></div>
@@ -1017,5 +1067,6 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
+<a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="mobile-sticky-cta">Reservar llamada gratis →</a>
 </body>
 </html>
