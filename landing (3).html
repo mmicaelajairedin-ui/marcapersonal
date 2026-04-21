@@ -86,6 +86,29 @@
   }
   .nav-cta:hover { background: var(--accent-deep); box-shadow: var(--shadow-md); transform: translateY(-1px); }
 
+  /* LANGUAGE TOGGLE */
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .lang-toggle {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .lang-toggle .dim { opacity: 0.35; }
+  html[lang="es"] .en-only { display: none !important; }
+  html[lang="en"] .es-only { display: none !important; }
+
   /* HERO */
   .hero {
     padding: 130px 40px 90px;
@@ -930,7 +953,16 @@
 
 <nav>
   <div class="logo">Micaela <span>Jairedin</span></div>
-  <a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="nav-cta">Llamada gratis</a>
+  <div class="nav-right">
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Change language">
+      <span class="es-only">ES <span class="dim">/ EN</span></span>
+      <span class="en-only">EN <span class="dim">/ ES</span></span>
+    </button>
+    <a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="nav-cta">
+      <span class="es-only">Llamada gratis</span>
+      <span class="en-only">Free call</span>
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -938,18 +970,34 @@
   <div class="hero-decor"></div>
   <div class="hero-grid">
     <div>
-      <div class="hero-eyebrow">Mentoría 1:1 · Desde la mirada del recruiter</div>
-      <div class="hero-proof"><span class="stars">★★★★★</span><span>5.0</span><span class="dot">·</span><span>+8 años como recruiter</span><span class="dot">·</span><span>ex Amazon</span></div>
-      <h1>Si tienes experiencia y nadie te llama, <em>el problema no eres tú.</em></h1>
-      <p class="hero-sub">Llevo 8 años decidiendo quién pasa a entrevista y quién no. Trabajo 1:1 contigo para reposicionar tu CV, tu LinkedIn y tu forma de entrevistar — en español o inglés — hasta que empiecen a llamarte.</p>
+      <div class="hero-eyebrow">
+        <span class="es-only">Mentoría 1:1 · Desde la mirada del recruiter</span>
+        <span class="en-only">1:1 Mentorship · From a recruiter's eye</span>
+      </div>
+      <div class="hero-proof"><span class="stars">★★★★★</span><span>5.0</span><span class="dot">·</span>
+        <span class="es-only">+8 años como recruiter</span>
+        <span class="en-only">8+ years as a recruiter</span>
+        <span class="dot">·</span><span>ex Amazon</span>
+      </div>
+      <h1 class="es-only">Si tienes experiencia y nadie te llama, <em>el problema no eres tú.</em></h1>
+      <h1 class="en-only">If you have experience and nobody calls back, <em>you're not the problem.</em></h1>
+      <p class="hero-sub es-only">Llevo 8 años decidiendo quién pasa a entrevista y quién no. Trabajo 1:1 contigo para reposicionar tu CV, tu LinkedIn y tu forma de entrevistar — en español o inglés — hasta que empiecen a llamarte.</p>
+      <p class="hero-sub en-only">I've spent 8 years deciding who moves to the interview stage and who doesn't. I work 1:1 with you to reposition your CV, your LinkedIn and how you interview — in Spanish or English — until the calls start coming in.</p>
       <div class="hero-ctas">
         <a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="btn-primary">
-          Reservar llamada gratis
+          <span class="es-only">Reservar llamada gratis</span>
+          <span class="en-only">Book free call</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#mentoria" class="btn-secondary">Cómo funciona →</a>
+        <a href="#mentoria" class="btn-secondary">
+          <span class="es-only">Cómo funciona →</span>
+          <span class="en-only">How it works →</span>
+        </a>
       </div>
-      <div class="cta-reassurance">30 min<span>·</span>Sin tarjeta<span>·</span>Sin compromiso</div>
+      <div class="cta-reassurance">
+        <span class="es-only">30 min<span>·</span>Sin tarjeta<span>·</span>Sin compromiso</span>
+        <span class="en-only">30 min<span>·</span>No credit card<span>·</span>No commitment</span>
+      </div>
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo-ring"></div>
@@ -963,12 +1011,27 @@
 <!-- TRUST BAR -->
 <div class="trust">
   <div class="trust-inner">
-    <div class="trust-label">Experiencia real</div>
+    <div class="trust-label">
+      <span class="es-only">Experiencia real</span>
+      <span class="en-only">Real experience</span>
+    </div>
     <div class="trust-items">
-      <div class="trust-item"><strong>+8</strong><span>años decidiendo<br>quién entra</span></div>
-      <div class="trust-item"><strong>+800</strong><span>procesos en<br>Europa y LATAM</span></div>
-      <div class="trust-item"><strong>Ex</strong><span>Amazon &amp;<br>entornos EMEA</span></div>
-      <div class="trust-item"><strong>ES/EN</strong><span>Mentoría en<br>dos idiomas</span></div>
+      <div class="trust-item"><strong>+8</strong>
+        <span class="es-only">años decidiendo<br>quién entra</span>
+        <span class="en-only">years deciding<br>who gets in</span>
+      </div>
+      <div class="trust-item"><strong>+800</strong>
+        <span class="es-only">procesos en<br>Europa y LATAM</span>
+        <span class="en-only">processes across<br>Europe and LATAM</span>
+      </div>
+      <div class="trust-item"><strong>Ex</strong>
+        <span class="es-only">Amazon &amp;<br>entornos EMEA</span>
+        <span class="en-only">Amazon &amp;<br>EMEA environments</span>
+      </div>
+      <div class="trust-item"><strong>ES/EN</strong>
+        <span class="es-only">Mentoría en<br>dos idiomas</span>
+        <span class="en-only">Mentorship in<br>both languages</span>
+      </div>
     </div>
   </div>
 </div>
@@ -976,28 +1039,54 @@
 <!-- MENTORÍA -->
 <section class="mentoria" id="mentoria">
   <div class="container reveal">
-    <span class="section-label">01 · La mentoría</span>
-    <h2>Tres etapas a lo largo de <em>4 a 6 semanas.</em></h2>
-    <p class="lead">Después de una llamada gratuita de 30 minutos para ver si encajamos, trabajamos 1:1 durante 4 a 6 semanas a través de tres grandes etapas, con entregables concretos en cada una.</p>
+    <span class="section-label">
+      <span class="es-only">01 · La mentoría</span>
+      <span class="en-only">01 · The mentorship</span>
+    </span>
+    <h2 class="es-only">Tres etapas a lo largo de <em>4 a 6 semanas.</em></h2>
+    <h2 class="en-only">Three stages across <em>4 to 6 weeks.</em></h2>
+    <p class="lead es-only">Después de una llamada gratuita de 30 minutos para ver si encajamos, trabajamos 1:1 durante 4 a 6 semanas a través de tres grandes etapas, con entregables concretos en cada una.</p>
+    <p class="lead en-only">After a free 30-minute call to see if we're a fit, we work 1:1 for 4 to 6 weeks through three main stages, with concrete outcomes at every step.</p>
 
     <div class="phases">
       <div class="phase">
         <div class="phase-num">01</div>
-        <span class="phase-label">Etapa uno</span>
-        <h3>Perfil y posicionamiento</h3>
-        <p>Revisión de tu CV y LinkedIn desde la mirada real de un recruiter. Te muestro <strong>qué pasa cuando abren tu perfil</strong> y qué hay que cambiar para que no te descarten en 7 segundos.</p>
+        <span class="phase-label">
+          <span class="es-only">Etapa uno</span>
+          <span class="en-only">Stage one</span>
+        </span>
+        <h3>
+          <span class="es-only">Perfil y posicionamiento</span>
+          <span class="en-only">Profile &amp; positioning</span>
+        </h3>
+        <p class="es-only">Revisión de tu CV y LinkedIn desde la mirada real de un recruiter. Te muestro <strong>qué pasa cuando abren tu perfil</strong> y qué hay que cambiar para que no te descarten en 7 segundos.</p>
+        <p class="en-only">CV and LinkedIn review from a real recruiter's perspective. I show you <strong>what happens when they open your profile</strong> and what to change so you don't get rejected in 7 seconds.</p>
       </div>
       <div class="phase">
         <div class="phase-num">02</div>
-        <span class="phase-label">Etapa dos</span>
-        <h3>Network y búsqueda laboral</h3>
-        <p>Estrategia para encontrar las ofertas donde realmente tienes chance, activar tu red de contactos y <strong>escribir a recruiters con mensajes que sí responden</strong>. Dejamos de aplicar al vacío.</p>
+        <span class="phase-label">
+          <span class="es-only">Etapa dos</span>
+          <span class="en-only">Stage two</span>
+        </span>
+        <h3>
+          <span class="es-only">Network y búsqueda laboral</span>
+          <span class="en-only">Networking &amp; job search</span>
+        </h3>
+        <p class="es-only">Estrategia para encontrar las ofertas donde realmente tienes chance, activar tu red de contactos y <strong>escribir a recruiters con mensajes que sí responden</strong>. Dejamos de aplicar al vacío.</p>
+        <p class="en-only">A strategy to find roles where you actually stand a chance, activate your network, and <strong>message recruiters in a way that actually gets a reply</strong>. No more applying into the void.</p>
       </div>
       <div class="phase">
         <div class="phase-num">03</div>
-        <span class="phase-label">Etapa tres</span>
-        <h3>Storytelling y entrevistas</h3>
-        <p>Construimos tu narrativa profesional con <strong>ejemplos STAR reales</strong> y cerramos con simulación de entrevista y feedback directo — las respuestas que suelen decidir si pasas de ronda o no.</p>
+        <span class="phase-label">
+          <span class="es-only">Etapa tres</span>
+          <span class="en-only">Stage three</span>
+        </span>
+        <h3>
+          <span class="es-only">Storytelling y entrevistas</span>
+          <span class="en-only">Storytelling &amp; interviews</span>
+        </h3>
+        <p class="es-only">Construimos tu narrativa profesional con <strong>ejemplos STAR reales</strong> y cerramos con simulación de entrevista y feedback directo — las respuestas que suelen decidir si pasas de ronda o no.</p>
+        <p class="en-only">We build your professional narrative with <strong>real STAR examples</strong> and close with mock interviews and direct feedback — the answers that usually decide whether you move to the next round.</p>
       </div>
     </div>
   </div>
@@ -1007,16 +1096,37 @@
 <section class="method">
   <div class="container reveal">
     <div>
-      <span class="section-label">02 · Tu espacio privado</span>
-      <h2>Todo tu proceso, en <em>un solo lugar.</em></h2>
-      <p>Mi trabajo no vive en hilos de WhatsApp ni carpetas de Drive desordenadas. Desde el primer día tienes acceso a un <strong>espacio privado de trabajo</strong> donde todo queda organizado, a mano y en orden.</p>
-      <p>Ves qué toca esta semana, dónde está tu CV, qué plantillas usar y en qué punto del proceso estamos. <strong>Cero fricción, cero ida y vuelta perdido.</strong></p>
+      <span class="section-label">
+        <span class="es-only">02 · Tu espacio privado</span>
+        <span class="en-only">02 · Your private workspace</span>
+      </span>
+      <h2 class="es-only">Todo tu proceso, en <em>un solo lugar.</em></h2>
+      <h2 class="en-only">Your whole process, in <em>one place.</em></h2>
+      <p class="es-only">Mi trabajo no vive en hilos de WhatsApp ni carpetas de Drive desordenadas. Desde el primer día tienes acceso a un <strong>espacio privado de trabajo</strong> donde todo queda organizado, a mano y en orden.</p>
+      <p class="en-only">My work doesn't live in WhatsApp threads or messy Drive folders. From day one you get access to a <strong>private workspace</strong> where everything stays organized, at hand and in order.</p>
+      <p class="es-only">Ves qué toca esta semana, dónde está tu CV, qué plantillas usar y en qué punto del proceso estamos. <strong>Cero fricción, cero ida y vuelta perdido.</strong></p>
+      <p class="en-only">You see what's on for this week, where your CV lives, which templates to use and exactly where we stand. <strong>Zero friction, nothing lost in the back-and-forth.</strong></p>
       <ul class="method-features">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Plan semanal con tareas claras y fechas</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tu CV, carta y documentos centralizados</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Plantillas, recursos y material listo para usar</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Feedback y mensajes fuera de las sesiones</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Historial completo al que siempre vuelves</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="es-only">Plan semanal con tareas claras y fechas</span>
+          <span class="en-only">Weekly plan with clear tasks and dates</span>
+        </li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="es-only">Tu CV, carta y documentos centralizados</span>
+          <span class="en-only">Your CV, cover letter and docs in one place</span>
+        </li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="es-only">Plantillas, recursos y material listo para usar</span>
+          <span class="en-only">Templates, resources and ready-to-use material</span>
+        </li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="es-only">Feedback y mensajes fuera de las sesiones</span>
+          <span class="en-only">Feedback and messages between sessions</span>
+        </li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="es-only">Historial completo al que siempre vuelves</span>
+          <span class="en-only">Full history you can always come back to</span>
+        </li>
       </ul>
     </div>
   </div>
@@ -1025,8 +1135,12 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="container reveal">
-    <span class="section-label">03 · Lo que dicen</span>
-    <h2>Personas reales, <em>resultados reales.</em></h2>
+    <span class="section-label">
+      <span class="es-only">03 · Lo que dicen</span>
+      <span class="en-only">03 · What they say</span>
+    </span>
+    <h2 class="es-only">Personas reales, <em>resultados reales.</em></h2>
+    <h2 class="en-only">Real people, <em>real results.</em></h2>
 
     <div class="testimonials-grid">
       <div class="testimonial-card">
@@ -1036,7 +1150,10 @@
           <div class="testimonial-avatar">JD</div>
           <div class="cite-info">
             <span class="cite-name">Juan Díaz</span>
-            <span class="cite-role">Cliente de mentoría</span>
+            <span class="cite-role">
+              <span class="es-only">Cliente de mentoría</span>
+              <span class="en-only">Mentorship client</span>
+            </span>
           </div>
           <span class="lang-badge">ES</span>
         </cite>
@@ -1060,33 +1177,53 @@
 <!-- FIT CHECK -->
 <section class="fit">
   <div class="container reveal">
-    <span class="section-label">04 · ¿Es para ti?</span>
-    <h2>Honesta con lo que <em>sí y no</em> es esto.</h2>
+    <span class="section-label">
+      <span class="es-only">04 · ¿Es para ti?</span>
+      <span class="en-only">04 · Is this for you?</span>
+    </span>
+    <h2 class="es-only">Honesta con lo que <em>sí y no</em> es esto.</h2>
+    <h2 class="en-only">Honest about what this <em>is and isn't.</em></h2>
     <div class="fit-grid">
       <div class="fit-card yes">
         <h3>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Es para ti si…
+          <span class="es-only">Es para ti si…</span>
+          <span class="en-only">It's for you if…</span>
         </h3>
-        <ul>
+        <ul class="es-only">
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tienes experiencia pero no recibes respuestas.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Aplicas a muchas ofertas y no pasas del primer filtro.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Buscas un rol local o internacional (ES / EN).</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Quieres un método claro, no consejos sueltos de internet.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Estás dispuesta a comprometer 4–6 semanas con el proceso.</li>
         </ul>
+        <ul class="en-only">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You have experience but don't hear back.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You apply to many roles and never pass the first filter.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You're looking for a local or international role (ES / EN).</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You want a clear method, not scattered internet advice.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You're ready to commit 4–6 weeks to the process.</li>
+        </ul>
       </div>
       <div class="fit-card no">
         <h3>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          No es para ti si…
+          <span class="es-only">No es para ti si…</span>
+          <span class="en-only">It's not for you if…</span>
         </h3>
-        <ul>
+        <ul class="es-only">
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Buscas que alguien te haga el CV sin involucrarte.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Esperas resultados instantáneos sin trabajar los fundamentos.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>No tienes tiempo para dedicar al proceso estas semanas.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Buscas un atajo, no un cambio real en cómo te presentas.</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Prefieres improvisar antes que seguir un método.</li>
+        </ul>
+        <ul class="en-only">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>You want someone to rewrite your CV without you getting involved.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>You expect instant results without working on the fundamentals.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>You don't have time to dedicate to the process these weeks.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>You're looking for a shortcut, not a real change.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>You'd rather wing it than follow a method.</li>
         </ul>
       </div>
     </div>
@@ -1104,10 +1241,18 @@
         </div>
       </div>
       <div class="authority-content">
-        <span class="section-label">05 · Quién está detrás</span>
-        <h2>Soy Micaela Jairedin.</h2>
-        <p>Especialista en adquisición de talento. He pasado <strong>más de 8 años al otro lado del proceso</strong>: decidiendo quién pasa a entrevista y quién no, gestionando <strong>más de 800 procesos</strong> en Europa y LATAM, en empresas como <strong>Amazon</strong>.</p>
-        <p>He visto cientos de perfiles capaces quedarse fuera — no por falta de experiencia, sino por cómo estaban posicionados. Mi trabajo es resolver exactamente eso, trabajando en <strong>español o inglés</strong> según lo que necesites.</p>
+        <span class="section-label">
+          <span class="es-only">05 · Quién está detrás</span>
+          <span class="en-only">05 · Who's behind this</span>
+        </span>
+        <h2>
+          <span class="es-only">Soy Micaela Jairedin.</span>
+          <span class="en-only">I'm Micaela Jairedin.</span>
+        </h2>
+        <p class="es-only">Especialista en adquisición de talento. He pasado <strong>más de 8 años al otro lado del proceso</strong>: decidiendo quién pasa a entrevista y quién no, gestionando <strong>más de 800 procesos</strong> en Europa y LATAM, en empresas como <strong>Amazon</strong>.</p>
+        <p class="en-only">Talent acquisition specialist. I've spent <strong>8+ years on the other side of the process</strong>: deciding who moves to the interview stage and who doesn't, running <strong>800+ processes</strong> across Europe and LATAM, at companies like <strong>Amazon</strong>.</p>
+        <p class="es-only">He visto cientos de perfiles capaces quedarse fuera — no por falta de experiencia, sino por cómo estaban posicionados. Mi trabajo es resolver exactamente eso, trabajando en <strong>español o inglés</strong> según lo que necesites.</p>
+        <p class="en-only">I've seen hundreds of capable profiles get left out — not for lack of experience, but for how they were positioned. My job is solving exactly that, in <strong>Spanish or English</strong>, whichever you need.</p>
         <div class="authority-badge">No es motivación. Es estrategia.</div>
       </div>
     </div>
@@ -1117,10 +1262,14 @@
 <!-- FAQ -->
 <section class="faq">
   <div class="container-narrow reveal">
-    <span class="section-label">06 · Preguntas frecuentes</span>
-    <h2>Lo que <em>siempre me preguntan.</em></h2>
+    <span class="section-label">
+      <span class="es-only">06 · Preguntas frecuentes</span>
+      <span class="en-only">06 · Frequently asked</span>
+    </span>
+    <h2 class="es-only">Lo que <em>siempre me preguntan.</em></h2>
+    <h2 class="en-only">What <em>I always get asked.</em></h2>
 
-    <div class="faq-list">
+    <div class="faq-list es-only">
       <details open>
         <summary>¿Cuánto cuesta la mentoría?</summary>
         <p><strong>120€ por sesión individual</strong> o <strong>400€ el paquete completo</strong> (mentoría guiada de 4 a 6 semanas). En la llamada gratis vemos cuál encaja mejor con tu momento, sin compromiso.</p>
@@ -1142,23 +1291,54 @@
         <p>Son 30 minutos para conocernos, entender tu situación y ver si la mentoría encaja. Si no encaja, te digo qué podrías hacer por tu cuenta. Sin venta agresiva.</p>
       </details>
     </div>
+    <div class="faq-list en-only">
+      <details open>
+        <summary>How much does the mentorship cost?</summary>
+        <p><strong>€120 per single session</strong> or <strong>€400 for the full package</strong> (guided mentorship of 4 to 6 weeks). In the free call we look at which fits your moment best, no commitment.</p>
+      </details>
+      <details>
+        <summary>Does it work if I haven't had results in months?</summary>
+        <p>Yes. The longer you go without a reply, the clearer it gets what needs adjusting. It's not about trying harder — it's about changing how you're playing the game.</p>
+      </details>
+      <details>
+        <summary>Which language do we work in?</summary>
+        <p>Whichever you prefer. I work in Spanish and English interchangeably. If you're aiming at international roles, we prepare your profile and interviews directly in English.</p>
+      </details>
+      <details>
+        <summary>How long until I see results?</summary>
+        <p>Depends on where you start, but the goal is that you see concrete changes in the first weeks (replies, recruiter messages, interviews) and real improvement within the 30 days of the Playbook.</p>
+      </details>
+      <details>
+        <summary>What happens in the free call?</summary>
+        <p>30 minutes to get to know each other, understand your situation and see if the mentorship is a fit. If it's not, I'll tell you what you could do on your own. No hard selling.</p>
+      </details>
+    </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>Deja de aplicar al vacío. <em>Empieza a ser elegida.</em></h2>
-  <p>Una llamada de 30 minutos, gratis, para ver si puedo ayudarte.</p>
+  <h2 class="es-only">Deja de aplicar al vacío. <em>Empieza a ser elegida.</em></h2>
+  <h2 class="en-only">Stop applying into the void. <em>Start being the one they choose.</em></h2>
+  <p class="es-only">Agenda tu llamada gratis de 30 minutos directamente aquí abajo.</p>
+  <p class="en-only">Book your free 30-minute call right below.</p>
   <div class="pricing-inline">
-    <span class="pricing-item"><strong>120€</strong> sesión individual</span>
+    <span class="pricing-item"><strong>120€</strong>
+      <span class="es-only">sesión individual</span>
+      <span class="en-only">single session</span>
+    </span>
     <span class="pricing-sep">·</span>
-    <span class="pricing-item"><strong>400€</strong> paquete completo <span class="pricing-note">4–6 semanas</span></span>
+    <span class="pricing-item"><strong>400€</strong>
+      <span class="es-only">paquete completo <span class="pricing-note">4–6 semanas</span></span>
+      <span class="en-only">full package <span class="pricing-note">4–6 weeks</span></span>
+    </span>
   </div>
-  <a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="btn-primary">
-    Reservar mi llamada
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-  </a>
-  <div class="final-cta-meta">SIN COMPROMISO · 30 MIN · ESPAÑOL O INGLÉS</div>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/mmicaela-jairedin/30min?hide_gdpr_banner=1&primary_color=8e7676" style="min-width:320px;height:720px;margin:0 auto;max-width:1000px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <div class="final-cta-meta">
+    <span class="es-only">SIN COMPROMISO · 30 MIN · ESPAÑOL O INGLÉS</span>
+    <span class="en-only">NO COMMITMENT · 30 MIN · SPANISH OR ENGLISH</span>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1188,6 +1368,24 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="mobile-sticky-cta">Reservar llamada gratis →</a>
+<a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="mobile-sticky-cta">
+  <span class="es-only">Reservar llamada gratis →</span>
+  <span class="en-only">Book free call →</span>
+</a>
+
+<script>
+  (function() {
+    var saved = localStorage.getItem('lang');
+    if (saved === 'en' || saved === 'es') {
+      document.documentElement.lang = saved;
+    }
+  })();
+  function toggleLang() {
+    var html = document.documentElement;
+    var next = html.lang === 'en' ? 'es' : 'en';
+    html.lang = next;
+    localStorage.setItem('lang', next);
+  }
+</script>
 </body>
 </html>
