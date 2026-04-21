@@ -727,6 +727,33 @@
     margin: 0 auto 36px;
     position: relative;
   }
+  .pricing-inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 32px;
+    padding: 14px 22px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    font-size: 14.5px;
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+  .pricing-inline strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    margin-right: 4px;
+  }
+  .pricing-sep { color: var(--line); }
+  .pricing-note {
+    color: var(--ink-muted);
+    font-size: 12px;
+    margin-left: 6px;
+  }
   .final-cta-meta {
     margin-top: 28px;
     font-family: 'Montserrat', sans-serif;
@@ -1011,7 +1038,7 @@
     <div class="faq-list">
       <details open>
         <summary>¿Cuánto cuesta la mentoría?</summary>
-        <p>La inversión depende del formato que elijas (mentoría puntual o Playbook de 30 días). Te cuento los detalles en la llamada gratis de 30 minutos, sin presión y sin compromiso.</p>
+        <p><strong>120€ por sesión individual</strong> o <strong>400€ el paquete completo</strong> (mentoría guiada de 4 a 6 semanas). En la llamada gratis vemos cuál encaja mejor con tu momento, sin compromiso.</p>
       </details>
       <details>
         <summary>¿Funciona si hace meses que no tengo resultados?</summary>
@@ -1035,8 +1062,13 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>Dejá de aplicar al vacío. <em>Empezá a ser elegida.</em></h2>
+  <h2>Deja de aplicar al vacío. <em>Empieza a ser elegida.</em></h2>
   <p>Una llamada de 30 minutos, gratis, para ver si puedo ayudarte.</p>
+  <div class="pricing-inline">
+    <span class="pricing-item"><strong>120€</strong> sesión individual</span>
+    <span class="pricing-sep">·</span>
+    <span class="pricing-item"><strong>400€</strong> paquete completo <span class="pricing-note">4–6 semanas</span></span>
+  </div>
   <a href="https://calendly.com/mmicaela-jairedin/30min" target="_blank" class="btn-primary">
     Reservar mi llamada
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
