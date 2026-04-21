@@ -230,15 +230,16 @@
     inset: 0;
     padding: 30px 36px;
     opacity: 0;
-    animation: scene-cycle 15s infinite;
+    animation: scene-cycle 20s infinite;
   }
   .demo-scene.s1 { animation-delay: 0s; }
-  .demo-scene.s2 { animation-delay: -10s; }
-  .demo-scene.s3 { animation-delay: -5s; }
+  .demo-scene.s2 { animation-delay: -15s; }
+  .demo-scene.s3 { animation-delay: -10s; }
+  .demo-scene.s4 { animation-delay: -5s; }
   @keyframes scene-cycle {
     0%, 1% { opacity: 0; transform: translateY(12px); }
-    4%, 30% { opacity: 1; transform: translateY(0); }
-    34%, 100% { opacity: 0; transform: translateY(-12px); }
+    3%, 23% { opacity: 1; transform: translateY(0); }
+    26%, 100% { opacity: 0; transform: translateY(-12px); }
   }
   .demo-h {
     font-family: 'Montserrat', sans-serif;
@@ -271,12 +272,12 @@
     height: 100%;
     background: linear-gradient(90deg, var(--accent-soft), var(--accent));
     width: 0%;
-    animation: fill-bar 15s infinite;
+    animation: fill-bar 20s infinite;
   }
   @keyframes fill-bar {
     0%, 1% { width: 35%; }
-    18% { width: 100%; }
-    34%, 100% { width: 100%; }
+    13% { width: 100%; }
+    26%, 100% { width: 100%; }
   }
   .demo-medal {
     display: flex;
@@ -288,13 +289,13 @@
     border: 1px solid var(--line);
     opacity: 0;
     transform: scale(0.7);
-    animation: medal-pop 15s infinite;
+    animation: medal-pop 20s infinite;
   }
   @keyframes medal-pop {
-    0%, 17% { opacity: 0; transform: scale(0.5); }
-    20% { opacity: 1; transform: scale(1.15); }
-    23%, 32% { opacity: 1; transform: scale(1); }
-    35%, 100% { opacity: 0; transform: scale(0.9); }
+    0%, 12% { opacity: 0; transform: scale(0.5); }
+    15% { opacity: 1; transform: scale(1.15); }
+    18%, 24% { opacity: 1; transform: scale(1); }
+    27%, 100% { opacity: 0; transform: scale(0.9); }
   }
   .demo-medal-badge { font-size: 38px; }
   .demo-medal-text strong {
@@ -317,13 +318,13 @@
     width: 14px; height: 14px;
     border-radius: 3px;
     opacity: 0;
-    animation: confetti-fall 15s infinite;
+    animation: confetti-fall 20s infinite;
   }
   @keyframes confetti-fall {
-    0%, 17% { opacity: 0; transform: translateY(0) rotate(0deg); }
-    19% { opacity: 1; }
-    33% { opacity: 1; transform: translateY(380px) rotate(540deg); }
-    38%, 100% { opacity: 0; transform: translateY(440px) rotate(720deg); }
+    0%, 12% { opacity: 0; transform: translateY(0) rotate(0deg); }
+    14% { opacity: 1; }
+    25% { opacity: 1; transform: translateY(380px) rotate(540deg); }
+    29%, 100% { opacity: 0; transform: translateY(440px) rotate(720deg); }
   }
   .demo-confetti span:nth-child(1) { left: 10%; background: #B38B6C; animation-delay: -0.1s; }
   .demo-confetti span:nth-child(2) { left: 25%; background: #8E7676; animation-delay: -0.3s; }
@@ -357,13 +358,13 @@
     color: var(--cream);
     border-bottom-right-radius: 6px;
   }
-  .demo-scene.s2 .demo-msg:nth-child(1) { animation: msg-in 15s infinite; animation-delay: -4.5s; }
-  .demo-scene.s2 .demo-msg:nth-child(2) { animation: msg-in 15s infinite; animation-delay: -3.5s; }
-  .demo-scene.s2 .demo-msg:nth-child(3) { animation: msg-in 15s infinite; animation-delay: -2.8s; }
-  .demo-scene.s2 .demo-msg:nth-child(4) { animation: msg-in 15s infinite; animation-delay: -2.2s; }
+  .demo-scene.s2 .demo-msg:nth-child(1) { animation: msg-in 20s infinite; animation-delay: -9s; }
+  .demo-scene.s2 .demo-msg:nth-child(2) { animation: msg-in 20s infinite; animation-delay: -8s; }
+  .demo-scene.s2 .demo-msg:nth-child(3) { animation: msg-in 20s infinite; animation-delay: -7.2s; }
+  .demo-scene.s2 .demo-msg:nth-child(4) { animation: msg-in 20s infinite; animation-delay: -6.6s; }
   @keyframes msg-in {
-    0%, 64% { opacity: 0; transform: translateY(10px); }
-    66%, 97% { opacity: 1; transform: translateY(0); }
+    0%, 72% { opacity: 0; transform: translateY(10px); }
+    74%, 97% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; }
   }
   .demo-input {
@@ -441,6 +442,145 @@
   @keyframes blink-cursor {
     0%, 49% { opacity: 1; }
     50%, 100% { opacity: 0; }
+  }
+
+  /* SCENE 4: CV editor */
+  .cv-editor {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 18px;
+    height: calc(100% - 48px);
+  }
+  .cv-preview {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px 14px;
+    animation: cv-accent 20s infinite;
+  }
+  @keyframes cv-accent {
+    0%, 24%, 100% { --cv-c: #4A3F3F; }
+    25%, 48% { --cv-c: #8E7676; }
+    49%, 72% { --cv-c: #B38B6C; }
+    73%, 99% { --cv-c: #6E8B85; }
+  }
+  .cv-photo {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4AFA6, #A38176);
+    border: 3px solid var(--cv-c, #4A3F3F);
+    margin: 0 auto 8px;
+    transition: border-color 0.4s;
+  }
+  .cv-header {
+    text-align: center;
+    border-bottom: 2.5px solid var(--cv-c, #4A3F3F);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    transition: border-color 0.4s;
+  }
+  .cv-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .cv-role { font-size: 12px; color: #998; margin-top: 2px; }
+  .cv-section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--cv-c, #4A3F3F);
+    margin: 8px 0 5px;
+    transition: color 0.4s;
+  }
+  .cv-line {
+    height: 4px;
+    background: #EFE5DC;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+  .cv-line.short { width: 70%; }
+  .cv-line.shorter { width: 45%; }
+  .cv-chip {
+    display: inline-block;
+    padding: 3px 9px;
+    background: var(--cv-c, #4A3F3F);
+    color: var(--cream);
+    border-radius: 5px;
+    font-size: 10px;
+    margin: 2px 3px 2px 0;
+    transition: background 0.4s;
+  }
+  .cv-tools { display: flex; flex-direction: column; gap: 10px; }
+  .cv-tool-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #998;
+  }
+  .cv-palette {
+    display: flex; gap: 10px;
+    padding: 12px 14px;
+    background: #F7F0EA;
+    border-radius: 14px;
+  }
+  .cv-palette span {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .cv-palette span.c1 { background: #4A3F3F; }
+  .cv-palette span.c2 { background: #8E7676; }
+  .cv-palette span.c3 { background: #B38B6C; }
+  .cv-palette span.c4 { background: #6E8B85; }
+  .cv-palette span.c5 { background: #C7A098; }
+  .cv-palette span::after {
+    content: '✓';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    opacity: 0;
+  }
+  .cv-palette .c1::after { animation: cv-tick 20s infinite; animation-delay: -5s; }
+  .cv-palette .c2::after { animation: cv-tick 20s infinite; animation-delay: -6.2s; }
+  .cv-palette .c3::after { animation: cv-tick 20s infinite; animation-delay: -7.4s; }
+  .cv-palette .c4::after { animation: cv-tick 20s infinite; animation-delay: -8.6s; }
+  @keyframes cv-tick {
+    0%, 5% { opacity: 0; }
+    6%, 10% { opacity: 1; }
+    11%, 100% { opacity: 0; }
+  }
+  .cv-fonts { display: flex; flex-direction: column; gap: 6px; }
+  .cv-font {
+    padding: 10px 14px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 13px;
+    color: #776;
+  }
+  .cv-font.active {
+    background: var(--accent);
+    color: var(--cream);
+    font-weight: 700;
+    border-color: var(--accent);
+  }
+  .cv-download {
+    margin-top: auto;
+    padding: 12px;
+    background: var(--accent);
+    color: var(--cream);
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
   }
 
   /* Bottom CTA */
@@ -573,6 +713,42 @@
             <div class="session-notes">
               <div class="session-notes-label">MIS TEMAS / DUDAS</div>
               <div class="session-notes-text">Quiero preparar ejemplos STAR para entrevistas senior</div>
+            </div>
+          </div>
+
+          <div class="demo-scene s4">
+            <div class="demo-h">Documentos · Editor de CV</div>
+            <div class="cv-editor">
+              <div class="cv-preview">
+                <div class="cv-photo"></div>
+                <div class="cv-header">
+                  <div class="cv-name">Juan J. Borregales</div>
+                  <div class="cv-role">Director General</div>
+                </div>
+                <div class="cv-section-label">EXPERIENCIA</div>
+                <div class="cv-line"></div>
+                <div class="cv-line short"></div>
+                <div class="cv-line"></div>
+                <div class="cv-line shorter"></div>
+                <div class="cv-section-label">COMPETENCIAS</div>
+                <span class="cv-chip">P&amp;L</span>
+                <span class="cv-chip">B2B</span>
+                <span class="cv-chip">Lean</span>
+              </div>
+              <div class="cv-tools">
+                <div class="cv-tool-label">Paleta</div>
+                <div class="cv-palette">
+                  <span class="c1"></span><span class="c2"></span>
+                  <span class="c3"></span><span class="c4"></span>
+                  <span class="c5"></span>
+                </div>
+                <div class="cv-tool-label">Tipografía</div>
+                <div class="cv-fonts">
+                  <div class="cv-font active">DM Serif — Refinada</div>
+                  <div class="cv-font">Montserrat — Moderna</div>
+                </div>
+                <div class="cv-download">↓ Descargar PDF</div>
+              </div>
             </div>
           </div>
         </div>
