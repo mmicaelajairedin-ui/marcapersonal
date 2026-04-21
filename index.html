@@ -792,70 +792,73 @@
     background: var(--accent);
   }
 
-  /* SCENE 3: video call */
-  .call-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    height: calc(100% - 58px);
-  }
-  .call-tile {
+  /* SCENE 3: schedule session + notes */
+  .session-book {
+    background: linear-gradient(135deg, #8E7676, #6B5959);
     border-radius: 10px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .call-tile.mica { background: linear-gradient(135deg, #C7A098, #8E7676); }
-  .call-tile.juan { background: linear-gradient(135deg, #E6D3CB, #A38176); }
-  .call-avatar {
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    color: var(--accent-deep);
-    box-shadow: 0 0 0 0 rgba(255,255,255,0.6);
-    animation: pulse-ring 2s infinite;
-  }
-  .call-tile.juan .call-avatar { animation-delay: 1s; color: #6B5959; }
-  @keyframes pulse-ring {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
-    50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
-  }
-  .call-label {
-    position: absolute;
-    bottom: 6px; left: 6px;
-    font-size: 9px;
-    padding: 3px 7px;
-    background: rgba(0,0,0,0.35);
-    color: #fff;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  .call-status {
-    margin-top: 10px;
-    font-size: 9px;
-    color: #998;
+    padding: 14px 12px 12px;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    color: var(--cream);
+    margin-bottom: 10px;
   }
-  .call-status::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #C94040;
-    animation: blink 1.2s infinite;
+  .session-book-icon { font-size: 18px; line-height: 1; }
+  .session-book-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 4px 0 2px;
   }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .session-book-sub {
+    font-size: 9px;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+  .session-book-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--cream);
+    color: var(--accent-deep);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 9.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: btn-pulse 1.8s infinite;
+  }
+  @keyframes btn-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  .session-notes {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .session-notes-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #998;
+    margin-bottom: 4px;
+  }
+  .session-notes-text {
+    font-size: 9.5px;
+    color: var(--ink);
+    line-height: 1.4;
+    min-height: 26px;
+  }
+  .session-notes-text::after {
+    content: '|';
+    color: var(--accent);
+    margin-left: 1px;
+    animation: blink-cursor 0.8s infinite;
+  }
+  @keyframes blink-cursor {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
 
   .demo-caption {
     position: absolute;
@@ -883,7 +886,7 @@
   @keyframes caption-text {
     0%, 30%, 100% { content: '⚡ Progreso y logros en tiempo real'; }
     34%, 63% { content: '💬 Feedback entre sesiones'; }
-    67%, 97% { content: '🎥 Sesiones 1:1 por videollamada'; }
+    67%, 97% { content: '📅 Agenda sesiones y deja notas'; }
   }
   .method h2 em { color: var(--accent-soft); }
   .method p {
@@ -1694,22 +1697,33 @@
 
           <div class="demo-scene s3">
             <div class="demo-h">
-              <span class="es-only">Sesión 1:1 · Storytelling</span>
-              <span class="en-only">1:1 Session · Storytelling</span>
+              <span class="es-only">Sesiones · Agenda con Micaela</span>
+              <span class="en-only">Sessions · Book with Micaela</span>
             </div>
-            <div class="call-grid">
-              <div class="call-tile mica">
-                <div class="call-avatar">M</div>
-                <div class="call-label">Micaela</div>
+            <div class="session-book">
+              <div class="session-book-icon">📅</div>
+              <div class="session-book-title">
+                <span class="es-only">Agenda tu sesión</span>
+                <span class="en-only">Book your session</span>
               </div>
-              <div class="call-tile juan">
-                <div class="call-avatar">J</div>
-                <div class="call-label">Juan</div>
+              <div class="session-book-sub">
+                <span class="es-only">Elige día y hora para hablar con Micaela</span>
+                <span class="en-only">Pick a day and time to talk with Micaela</span>
+              </div>
+              <div class="session-book-btn">
+                <span class="es-only">Elegir día y hora →</span>
+                <span class="en-only">Pick day and time →</span>
               </div>
             </div>
-            <div class="call-status">
-              <span class="es-only">Grabando · 28:14</span>
-              <span class="en-only">Recording · 28:14</span>
+            <div class="session-notes">
+              <div class="session-notes-label">
+                <span class="es-only">MIS TEMAS / DUDAS</span>
+                <span class="en-only">MY TOPICS / QUESTIONS</span>
+              </div>
+              <div class="session-notes-text">
+                <span class="es-only">Quiero preparar ejemplos STAR para entrevistas senior</span>
+                <span class="en-only">I want to prep STAR examples for senior interviews</span>
+              </div>
             </div>
           </div>
         </div>
