@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Banner LinkedIn · Micaela Jairedin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #8E7676;
+    --accent-deep: #6B5959;
+    --accent-soft: #C7A098;
+    --bg: #F5EBE4;
+    --cream: #FAF4EF;
+    --ink: #4A3F3F;
+    --gold: #B38B6C;
+    --line: #E5D5CC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #2A2424;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Open Sans', system-ui, sans-serif;
+    color: #fff;
+  }
+  .hint {
+    max-width: 1584px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .hint strong { color: #fff; }
+  .banner {
+    width: 1584px;
+    height: 396px;
+    background: linear-gradient(120deg, #EFE5DC 0%, #F5EBE4 45%, #FAF4EF 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .banner::before {
+    content: '';
+    position: absolute;
+    top: -180px; left: -120px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(142,118,118,0.28), transparent 70%);
+    pointer-events: none;
+  }
+  .banner::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; right: -180px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(199,160,152,0.35), transparent 65%);
+    pointer-events: none;
+  }
+  .accent-line {
+    position: absolute;
+    left: 80px; top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 240px;
+    background: linear-gradient(180deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+    opacity: 0.6;
+  }
+  .content {
+    position: absolute;
+    right: 80px; top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+    max-width: 980px;
+    z-index: 2;
+  }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+  }
+  .eyebrow::after {
+    content: '';
+    width: 54px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -2.5px;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .tagline {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--accent-deep);
+    font-weight: 500;
+    margin-bottom: 28px;
+    max-width: 820px;
+    margin-left: auto;
+  }
+  .tagline em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .stats {
+    display: flex;
+    justify-content: flex-end;
+    gap: 44px;
+    font-family: 'Montserrat', sans-serif;
+    align-items: baseline;
+  }
+  .stat { text-align: right; }
+  .stat strong {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+  .stat span {
+    font-size: 10.5px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    opacity: 0.75;
+    font-weight: 600;
+  }
+  .domain {
+    position: absolute;
+    bottom: 28px;
+    right: 80px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--accent-deep);
+    opacity: 0.7;
+    z-index: 2;
+  }
+  .domain::before {
+    content: '→  ';
+    color: var(--accent);
+  }
+  .monogram {
+    position: absolute;
+    bottom: 28px;
+    left: 80px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--accent-deep);
+    opacity: 0.55;
+    z-index: 2;
+  }
+  .monogram span { color: var(--accent); }
+  @media (max-width: 1640px) {
+    .banner { transform: scale(calc(100vw / 1624)); transform-origin: top center; }
+  }
+</style>
+</head>
+<body>
+<div class="hint">
+  <strong>Cómo usar:</strong> capturá solo la zona del banner (1584×396) con una herramienta de screenshot (CleanShot, Snipping Tool, ScreenToGif) y subila como foto de portada en tu perfil de LinkedIn.<br>
+  <strong>Tip:</strong> en Chrome hacé <code style="background:#444;padding:2px 6px;border-radius:4px;color:#fff;">Ctrl/Cmd + Shift + P</code> → "Capture full size screenshot" desde DevTools para una captura exacta.
+</div>
+
+<div class="banner">
+  <div class="accent-line"></div>
+  <div class="content">
+    <div class="eyebrow">Talent Acquisition · Mentora 1:1</div>
+    <h1 class="name">Micaela Jairedin</h1>
+    <p class="tagline">Desde el otro lado de la entrevista. <em>Mentoría para que empiecen a llamarte.</em></p>
+    <div class="stats">
+      <div class="stat"><strong>+8</strong><span>Años</span></div>
+      <div class="stat"><strong>+800</strong><span>Procesos</span></div>
+      <div class="stat"><strong>Ex</strong><span>Amazon</span></div>
+      <div class="stat"><strong>ES / EN</strong><span>Bilingüe</span></div>
+    </div>
+  </div>
+  <div class="monogram">M<span>J</span></div>
+  <div class="domain">micaelajairedin.com</div>
+</div>
+</body>
+</html>

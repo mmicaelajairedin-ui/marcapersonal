@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reel IG · Espacio privado · Micaela Jairedin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #8E7676;
+    --accent-deep: #6B5959;
+    --accent-soft: #C7A098;
+    --bg: #F5EBE4;
+    --bg-dark: #4A3F3F;
+    --cream: #FAF4EF;
+    --ink: #4A3F3F;
+    --ink-muted: #888888;
+    --line: #E5D5CC;
+    --white: #FFFFFF;
+    --gold: #B38B6C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px;
+    font-family: 'Open Sans', system-ui, sans-serif;
+    color: #ccc;
+    gap: 16px;
+  }
+  .hint {
+    max-width: 1080px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .hint strong { color: #fff; }
+
+  .reel {
+    width: 1080px;
+    height: 1920px;
+    background: linear-gradient(180deg, var(--bg) 0%, #EFE5DC 60%, #E6D3CB 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    font-family: 'Open Sans', system-ui, sans-serif;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+  .reel::before {
+    content: '';
+    position: absolute;
+    top: -250px; left: -200px;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(199,160,152,0.35), transparent 70%);
+  }
+  .reel::after {
+    content: '';
+    position: absolute;
+    bottom: -300px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(142,118,118,0.3), transparent 70%);
+  }
+
+  /* Top */
+  .top {
+    padding: 80px 80px 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 26px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '·';
+    margin: 0 18px;
+    opacity: 0.5;
+  }
+  .headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 86px;
+    line-height: 1.02;
+    letter-spacing: -3px;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .headline em {
+    color: var(--accent);
+    font-style: normal;
+  }
+  .sub {
+    font-size: 30px;
+    color: var(--accent-deep);
+    line-height: 1.45;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Mockup */
+  .mockup-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .demo-frame {
+    width: 100%;
+    max-width: 920px;
+    background: var(--cream);
+    border-radius: 28px;
+    box-shadow: 0 50px 100px rgba(74,63,63,0.35);
+    overflow: hidden;
+    aspect-ratio: 5/3.6;
+    position: relative;
+    color: var(--ink);
+  }
+  .demo-chrome {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    background: #EDE4DE;
+    border-bottom: 1px solid var(--line);
+  }
+  .demo-dots { display: flex; gap: 10px; }
+  .demo-dots span {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #D9C6BC;
+  }
+  .demo-url {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    color: #998;
+    letter-spacing: 0.4px;
+  }
+  .demo-body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    height: calc(100% - 58px);
+  }
+  .demo-sidebar {
+    background: #F7F0EA;
+    border-right: 1px solid var(--line);
+    padding: 22px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .demo-sb-avatar {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4AFA6, #A38176);
+    margin: 0 auto 2px;
+  }
+  .demo-sb-name { text-align: center; font-weight: 700; font-size: 17px; }
+  .demo-sb-week { text-align: center; font-size: 13px; color: #998; }
+  .demo-sb-medal {
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .demo-sb-medal-icon { font-size: 30px; line-height: 1; }
+  .demo-sb-medal-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent-deep);
+    margin: 4px 0 6px;
+  }
+  .demo-sb-medal-mini {
+    height: 5px;
+    background: #EDE0D8;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .demo-sb-medal-mini div {
+    height: 100%;
+    width: 75%;
+    background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+  }
+  .demo-sb-medal-next { font-size: 11px; color: #998; margin-top: 6px; }
+  .demo-sb-menu {
+    display: flex; flex-direction: column; gap: 4px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .demo-sb-item {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #776;
+    font-weight: 500;
+  }
+  .demo-sb-item.active {
+    background: var(--accent);
+    color: var(--cream);
+    font-weight: 700;
+  }
+
+  .demo-content {
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .demo-scene {
+    position: absolute;
+    inset: 0;
+    padding: 30px 36px;
+    opacity: 0;
+    animation: scene-cycle 15s infinite;
+  }
+  .demo-scene.s1 { animation-delay: 0s; }
+  .demo-scene.s2 { animation-delay: -10s; }
+  .demo-scene.s3 { animation-delay: -5s; }
+  @keyframes scene-cycle {
+    0%, 1% { opacity: 0; transform: translateY(12px); }
+    4%, 30% { opacity: 1; transform: translateY(0); }
+    34%, 100% { opacity: 0; transform: translateY(-12px); }
+  }
+  .demo-h {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .demo-steps { display: flex; gap: 6px; margin-bottom: 24px; }
+  .demo-step {
+    flex: 1;
+    padding: 10px 6px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    background: #F2EAE4;
+    color: #998;
+  }
+  .demo-step.done { background: #E6D3CB; color: var(--accent-deep); }
+  .demo-step.active { background: var(--accent); color: var(--cream); }
+  .demo-progress-bar {
+    height: 10px;
+    background: #F2EAE4;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .demo-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+    width: 0%;
+    animation: fill-bar 15s infinite;
+  }
+  @keyframes fill-bar {
+    0%, 1% { width: 35%; }
+    18% { width: 100%; }
+    34%, 100% { width: 100%; }
+  }
+  .demo-medal {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #F5EBE4, #E6D3CB);
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    opacity: 0;
+    transform: scale(0.7);
+    animation: medal-pop 15s infinite;
+  }
+  @keyframes medal-pop {
+    0%, 17% { opacity: 0; transform: scale(0.5); }
+    20% { opacity: 1; transform: scale(1.15); }
+    23%, 32% { opacity: 1; transform: scale(1); }
+    35%, 100% { opacity: 0; transform: scale(0.9); }
+  }
+  .demo-medal-badge { font-size: 38px; }
+  .demo-medal-text strong {
+    display: block;
+    color: var(--accent-deep);
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+  .demo-medal-text span { color: #998; font-size: 14px; }
+  .demo-confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .demo-confetti span {
+    position: absolute;
+    top: -20px;
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: confetti-fall 15s infinite;
+  }
+  @keyframes confetti-fall {
+    0%, 17% { opacity: 0; transform: translateY(0) rotate(0deg); }
+    19% { opacity: 1; }
+    33% { opacity: 1; transform: translateY(380px) rotate(540deg); }
+    38%, 100% { opacity: 0; transform: translateY(440px) rotate(720deg); }
+  }
+  .demo-confetti span:nth-child(1) { left: 10%; background: #B38B6C; animation-delay: -0.1s; }
+  .demo-confetti span:nth-child(2) { left: 25%; background: #8E7676; animation-delay: -0.3s; }
+  .demo-confetti span:nth-child(3) { left: 40%; background: #C7A098; animation-delay: -0.05s; }
+  .demo-confetti span:nth-child(4) { left: 55%; background: #6B5959; animation-delay: -0.2s; }
+  .demo-confetti span:nth-child(5) { left: 70%; background: #E6D3CB; animation-delay: -0.15s; }
+  .demo-confetti span:nth-child(6) { left: 85%; background: #B38B6C; animation-delay: -0.4s; }
+  .demo-confetti span:nth-child(7) { left: 18%; background: #C7A098; animation-delay: -0.25s; }
+  .demo-confetti span:nth-child(8) { left: 60%; background: #8E7676; animation-delay: -0.35s; }
+  .demo-confetti span:nth-child(9) { left: 78%; background: #B38B6C; animation-delay: -0.45s; }
+  .demo-confetti span:nth-child(10) { left: 32%; background: #6B5959; animation-delay: -0.12s; }
+
+  .demo-msgs { display: flex; flex-direction: column; gap: 12px; }
+  .demo-msg {
+    max-width: 78%;
+    padding: 12px 18px;
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 1.4;
+    opacity: 0;
+  }
+  .demo-msg.mica {
+    align-self: flex-start;
+    background: #F2EAE4;
+    color: var(--ink);
+    border-bottom-left-radius: 6px;
+  }
+  .demo-msg.juan {
+    align-self: flex-end;
+    background: var(--accent);
+    color: var(--cream);
+    border-bottom-right-radius: 6px;
+  }
+  .demo-scene.s2 .demo-msg:nth-child(1) { animation: msg-in 15s infinite; animation-delay: -4.5s; }
+  .demo-scene.s2 .demo-msg:nth-child(2) { animation: msg-in 15s infinite; animation-delay: -3.5s; }
+  .demo-scene.s2 .demo-msg:nth-child(3) { animation: msg-in 15s infinite; animation-delay: -2.8s; }
+  .demo-scene.s2 .demo-msg:nth-child(4) { animation: msg-in 15s infinite; animation-delay: -2.2s; }
+  @keyframes msg-in {
+    0%, 64% { opacity: 0; transform: translateY(10px); }
+    66%, 97% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; }
+  }
+  .demo-input {
+    position: absolute;
+    left: 36px; right: 36px; bottom: 30px;
+    padding: 14px 20px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    font-size: 14px;
+    color: #998;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .demo-input-send {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .session-book {
+    background: linear-gradient(135deg, #8E7676, #6B5959);
+    border-radius: 16px;
+    padding: 22px 18px 20px;
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .session-book-icon { font-size: 34px; line-height: 1; }
+  .session-book-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 8px 0 4px;
+  }
+  .session-book-sub { font-size: 14px; opacity: 0.85; margin-bottom: 14px; }
+  .session-book-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: var(--cream);
+    color: var(--accent-deep);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    animation: btn-pulse 1.8s infinite;
+  }
+  @keyframes btn-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  .session-notes {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .session-notes-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #998;
+    margin-bottom: 8px;
+  }
+  .session-notes-text { font-size: 16px; color: var(--ink); line-height: 1.4; min-height: 50px; }
+  .session-notes-text::after {
+    content: '|';
+    color: var(--accent);
+    margin-left: 2px;
+    animation: blink-cursor 0.8s infinite;
+  }
+  @keyframes blink-cursor {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  /* Bottom CTA */
+  .bottom {
+    padding: 30px 80px 90px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .cta-price {
+    display: inline-flex;
+    gap: 30px;
+    padding: 18px 30px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 10px 30px rgba(74,63,63,0.1);
+    margin-bottom: 30px;
+  }
+  .cta-price strong {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 24px;
+    margin-right: 6px;
+  }
+  .cta-price .item { font-size: 18px; color: var(--ink); }
+  .cta-price .sep { color: var(--line); }
+  .cta-domain {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 42px;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .cta-domain span { color: var(--accent); }
+  .cta-tag {
+    font-size: 22px;
+    color: var(--accent-deep);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="hint">
+  <strong>Cómo usar:</strong> abrí esta página en Chrome, ajustá la ventana para que se vea el reel completo (1080×1920) y grabá ~16 segundos con CleanShot / ScreenToGif / Loom. Subís el .mp4 a Instagram Reel.<br>
+  <strong>Tip Chrome:</strong> DevTools (F12) → ícono de celular → elegí "Custom" y poné 1080×1920 para ver el tamaño exacto.
+</div>
+
+<div class="reel">
+  <div class="top">
+    <div class="eyebrow">Tu espacio privado</div>
+    <h1 class="headline">Así trabajamos <em>juntas.</em></h1>
+    <p class="sub">Todo tu proceso de búsqueda, organizado en un solo lugar.</p>
+  </div>
+
+  <div class="mockup-wrap">
+    <div class="demo-frame">
+      <div class="demo-chrome">
+        <div class="demo-dots"><span></span><span></span><span></span></div>
+        <div class="demo-url">app.micaelajairedin.com</div>
+      </div>
+      <div class="demo-body">
+        <aside class="demo-sidebar">
+          <div class="demo-sb-avatar"></div>
+          <div class="demo-sb-name">Hola, Juan</div>
+          <div class="demo-sb-week">Semana 3/5</div>
+          <div class="demo-sb-medal">
+            <div class="demo-sb-medal-icon">🥈</div>
+            <div class="demo-sb-medal-label">PLATA</div>
+            <div class="demo-sb-medal-mini"><div></div></div>
+            <div class="demo-sb-medal-next">1 logro para 🏆 Oro</div>
+          </div>
+          <div class="demo-sb-menu">
+            <div class="demo-sb-item active">Mi semana</div>
+            <div class="demo-sb-item">Documentos</div>
+            <div class="demo-sb-item">LinkedIn</div>
+            <div class="demo-sb-item">Recursos</div>
+            <div class="demo-sb-item">Sesiones</div>
+          </div>
+        </aside>
+
+        <div class="demo-content">
+          <div class="demo-scene s1">
+            <div class="demo-h">Mi semana</div>
+            <div class="demo-steps">
+              <div class="demo-step done">Evaluar</div>
+              <div class="demo-step done">CV</div>
+              <div class="demo-step active">LinkedIn</div>
+              <div class="demo-step">Buscar</div>
+              <div class="demo-step">Revisar</div>
+            </div>
+            <div class="demo-progress-bar"><div class="demo-progress-fill"></div></div>
+            <div class="demo-medal">
+              <div class="demo-medal-badge">🏅</div>
+              <div class="demo-medal-text">
+                <strong>¡Medalla Plata!</strong>
+                <span>Completaste la etapa 2</span>
+              </div>
+            </div>
+            <div class="demo-confetti">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="demo-scene s2">
+            <div class="demo-h">Mensajes · Micaela</div>
+            <div class="demo-msgs">
+              <div class="demo-msg juan">Ya publiqué el nuevo titular en LinkedIn 🎉</div>
+              <div class="demo-msg mica">¡Quedó increíble! Ya te dejé feedback en el CV también.</div>
+              <div class="demo-msg juan">Perfecto, lo reviso hoy.</div>
+              <div class="demo-msg mica">Ya recibiste 2 mensajes de recruiters esta semana 👀</div>
+            </div>
+            <div class="demo-input">
+              Escribe un mensaje…
+              <div class="demo-input-send"></div>
+            </div>
+          </div>
+
+          <div class="demo-scene s3">
+            <div class="demo-h">Sesiones · Agenda con Micaela</div>
+            <div class="session-book">
+              <div class="session-book-icon">📅</div>
+              <div class="session-book-title">Agenda tu sesión</div>
+              <div class="session-book-sub">Elige día y hora para hablar con Micaela</div>
+              <div class="session-book-btn">Elegir día y hora →</div>
+            </div>
+            <div class="session-notes">
+              <div class="session-notes-label">MIS TEMAS / DUDAS</div>
+              <div class="session-notes-text">Quiero preparar ejemplos STAR para entrevistas senior</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="cta-price">
+      <span class="item"><strong>120€</strong>sesión</span>
+      <span class="sep">·</span>
+      <span class="item"><strong>400€</strong>paquete 4–6 semanas</span>
+    </div>
+    <div class="cta-domain">micaelajairedin<span>.com</span></div>
+    <div class="cta-tag">Mentoría 1:1 desde la mirada del recruiter</div>
+  </div>
+</div>
+
+</body>
+</html>
