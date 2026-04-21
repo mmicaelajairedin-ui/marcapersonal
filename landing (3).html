@@ -597,6 +597,55 @@
     color: var(--accent);
   }
 
+  /* FIT CHECK (para ti sí / no) */
+  .fit {
+    background: var(--bg);
+    padding: 110px 40px;
+  }
+  .fit .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .fit h2 { margin-bottom: 50px; }
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    text-align: left;
+  }
+  .fit-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .fit-card.no { background: transparent; box-shadow: none; }
+  .fit-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .fit-card.yes h3 { color: var(--accent-deep); }
+  .fit-card.no h3 { color: var(--ink-muted); }
+  .fit-card ul { list-style: none; }
+  .fit-card li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .fit-card.no li { color: var(--ink-muted); }
+  .fit-card li svg { flex-shrink: 0; margin-top: 3px; }
+  .fit-card.yes li svg { color: var(--accent); }
+  .fit-card.no li svg { color: var(--ink-muted); opacity: 0.6; }
+
   /* AUTHORITY */
   .authority { background: var(--bg); }
   .authority-grid {
@@ -819,6 +868,8 @@
     .authority-photo-wrap { max-width: 240px; }
     .method .container { grid-template-columns: 1fr; gap: 40px; }
     .method, .testimonials { padding: 70px 20px; }
+    .fit { padding: 70px 20px; }
+    .fit-grid { grid-template-columns: 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
     .trust-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
     .trust-items { gap: 24px; }
@@ -888,7 +939,7 @@
   <div class="hero-grid">
     <div>
       <div class="hero-eyebrow">Mentoría 1:1 · Desde la mirada del recruiter</div>
-      <div class="hero-proof"><span class="stars">★★★★★</span><span>Testimonios 5.0</span><span class="dot">·</span><span>Mentorías en ES / EN</span></div>
+      <div class="hero-proof"><span class="stars">★★★★★</span><span>5.0</span><span class="dot">·</span><span>+8 años como recruiter</span><span class="dot">·</span><span>ex Amazon</span></div>
       <h1>Si tienes experiencia y nadie te llama, <em>el problema no eres tú.</em></h1>
       <p class="hero-sub">Llevo 8 años decidiendo quién pasa a entrevista y quién no. Trabajo 1:1 contigo para reposicionar tu CV, tu LinkedIn y tu forma de entrevistar — en español o inglés — hasta que empiecen a llamarte.</p>
       <div class="hero-ctas">
@@ -1006,6 +1057,42 @@
   </div>
 </section>
 
+<!-- FIT CHECK -->
+<section class="fit">
+  <div class="container reveal">
+    <span class="section-label">04 · ¿Es para ti?</span>
+    <h2>Honesta con lo que <em>sí y no</em> es esto.</h2>
+    <div class="fit-grid">
+      <div class="fit-card yes">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Es para ti si…
+        </h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tienes experiencia pero no recibes respuestas.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Aplicas a muchas ofertas y no pasas del primer filtro.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Buscas un rol local o internacional (ES / EN).</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Quieres un método claro, no consejos sueltos de internet.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Estás dispuesta a comprometer 4–6 semanas con el proceso.</li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No es para ti si…
+        </h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Buscas que alguien te haga el CV sin involucrarte.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Esperas resultados instantáneos sin trabajar los fundamentos.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>No tienes tiempo para dedicar al proceso estas semanas.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Buscas un atajo, no un cambio real en cómo te presentas.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Prefieres improvisar antes que seguir un método.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- AUTHORITY -->
 <section class="authority">
   <div class="container">
@@ -1017,7 +1104,7 @@
         </div>
       </div>
       <div class="authority-content">
-        <span class="section-label">04 · Quién está detrás</span>
+        <span class="section-label">05 · Quién está detrás</span>
         <h2>Soy Micaela Jairedin.</h2>
         <p>Especialista en adquisición de talento. He pasado <strong>más de 8 años al otro lado del proceso</strong>: decidiendo quién pasa a entrevista y quién no, gestionando <strong>más de 800 procesos</strong> en Europa y LATAM, en empresas como <strong>Amazon</strong>.</p>
         <p>He visto cientos de perfiles capaces quedarse fuera — no por falta de experiencia, sino por cómo estaban posicionados. Mi trabajo es resolver exactamente eso, trabajando en <strong>español o inglés</strong> según lo que necesites.</p>
@@ -1030,7 +1117,7 @@
 <!-- FAQ -->
 <section class="faq">
   <div class="container-narrow reveal">
-    <span class="section-label">05 · Preguntas frecuentes</span>
+    <span class="section-label">06 · Preguntas frecuentes</span>
     <h2>Lo que <em>siempre me preguntan.</em></h2>
 
     <div class="faq-list">
