@@ -626,15 +626,16 @@
     inset: 0;
     padding: 18px 20px;
     opacity: 0;
-    animation: scene-cycle 15s infinite;
+    animation: scene-cycle 20s infinite;
   }
   .demo-scene.s1 { animation-delay: 0s; }
-  .demo-scene.s2 { animation-delay: -10s; }
-  .demo-scene.s3 { animation-delay: -5s; }
+  .demo-scene.s2 { animation-delay: -15s; }
+  .demo-scene.s3 { animation-delay: -10s; }
+  .demo-scene.s4 { animation-delay: -5s; }
   @keyframes scene-cycle {
     0%, 1% { opacity: 0; transform: translateY(8px); }
-    4%, 30% { opacity: 1; transform: translateY(0); }
-    34%, 100% { opacity: 0; transform: translateY(-8px); }
+    3%, 23% { opacity: 1; transform: translateY(0); }
+    26%, 100% { opacity: 0; transform: translateY(-8px); }
   }
   .demo-h {
     font-family: 'Montserrat', sans-serif;
@@ -673,12 +674,12 @@
     height: 100%;
     background: linear-gradient(90deg, var(--accent-soft), var(--accent));
     width: 0%;
-    animation: fill-bar 15s infinite;
+    animation: fill-bar 20s infinite;
   }
   @keyframes fill-bar {
     0%, 1% { width: 35%; }
-    18% { width: 100%; }
-    34%, 100% { width: 100%; }
+    13% { width: 100%; }
+    26%, 100% { width: 100%; }
   }
   .demo-medal {
     display: flex;
@@ -690,13 +691,13 @@
     border: 1px solid var(--line);
     opacity: 0;
     transform: scale(0.7);
-    animation: medal-pop 15s infinite;
+    animation: medal-pop 20s infinite;
   }
   @keyframes medal-pop {
-    0%, 17% { opacity: 0; transform: scale(0.5); }
-    20% { opacity: 1; transform: scale(1.15); }
-    23%, 32% { opacity: 1; transform: scale(1); }
-    35%, 100% { opacity: 0; transform: scale(0.9); }
+    0%, 12% { opacity: 0; transform: scale(0.5); }
+    15% { opacity: 1; transform: scale(1.15); }
+    18%, 24% { opacity: 1; transform: scale(1); }
+    27%, 100% { opacity: 0; transform: scale(0.9); }
   }
   .demo-medal-badge {
     font-size: 22px;
@@ -723,13 +724,13 @@
     width: 8px; height: 8px;
     border-radius: 2px;
     opacity: 0;
-    animation: confetti-fall 15s infinite;
+    animation: confetti-fall 20s infinite;
   }
   @keyframes confetti-fall {
-    0%, 17% { opacity: 0; transform: translateY(0) rotate(0deg); }
-    19% { opacity: 1; }
-    33% { opacity: 1; transform: translateY(220px) rotate(540deg); }
-    38%, 100% { opacity: 0; transform: translateY(260px) rotate(720deg); }
+    0%, 12% { opacity: 0; transform: translateY(0) rotate(0deg); }
+    14% { opacity: 1; }
+    25% { opacity: 1; transform: translateY(220px) rotate(540deg); }
+    29%, 100% { opacity: 0; transform: translateY(260px) rotate(720deg); }
   }
   .demo-confetti span:nth-child(1) { left: 10%; background: #B38B6C; animation-delay: -0.1s; }
   .demo-confetti span:nth-child(2) { left: 25%; background: #8E7676; animation-delay: -0.3s; }
@@ -764,13 +765,13 @@
     color: var(--cream);
     border-bottom-right-radius: 4px;
   }
-  .demo-scene.s2 .demo-msg:nth-child(1) { animation: msg-in 15s infinite; animation-delay: -4.5s; }
-  .demo-scene.s2 .demo-msg:nth-child(2) { animation: msg-in 15s infinite; animation-delay: -3.5s; }
-  .demo-scene.s2 .demo-msg:nth-child(3) { animation: msg-in 15s infinite; animation-delay: -2.8s; }
-  .demo-scene.s2 .demo-msg:nth-child(4) { animation: msg-in 15s infinite; animation-delay: -2.2s; }
+  .demo-scene.s2 .demo-msg:nth-child(1) { animation: msg-in 20s infinite; animation-delay: -9s; }
+  .demo-scene.s2 .demo-msg:nth-child(2) { animation: msg-in 20s infinite; animation-delay: -8s; }
+  .demo-scene.s2 .demo-msg:nth-child(3) { animation: msg-in 20s infinite; animation-delay: -7.2s; }
+  .demo-scene.s2 .demo-msg:nth-child(4) { animation: msg-in 20s infinite; animation-delay: -6.6s; }
   @keyframes msg-in {
-    0%, 64% { opacity: 0; transform: translateY(6px); }
-    66%, 97% { opacity: 1; transform: translateY(0); }
+    0%, 72% { opacity: 0; transform: translateY(6px); }
+    74%, 97% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; }
   }
   .demo-input {
@@ -860,6 +861,161 @@
     50%, 100% { opacity: 0; }
   }
 
+  /* SCENE 4: CV Editor */
+  .cv-editor {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 10px;
+    height: calc(100% - 30px);
+  }
+  .cv-preview {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 11px 8px;
+    position: relative;
+    animation: cv-accent 20s infinite;
+  }
+  @keyframes cv-accent {
+    0%, 24%, 100% { --cv-c: #4A3F3F; }
+    25%, 48% { --cv-c: #8E7676; }
+    49%, 72% { --cv-c: #B38B6C; }
+    73%, 99% { --cv-c: #6E8B85; }
+  }
+  .cv-photo {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4AFA6, #A38176);
+    border: 2px solid var(--cv-c, #4A3F3F);
+    margin: 0 auto 5px;
+    transition: border-color 0.4s;
+  }
+  .cv-header {
+    text-align: center;
+    border-bottom: 1.5px solid var(--cv-c, #4A3F3F);
+    padding-bottom: 5px;
+    margin-bottom: 6px;
+    transition: border-color 0.4s;
+  }
+  .cv-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 9px;
+    color: var(--ink);
+  }
+  .cv-role {
+    font-size: 7px;
+    color: #998;
+    margin-top: 1px;
+  }
+  .cv-section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--cv-c, #4A3F3F);
+    margin: 4px 0 3px;
+    transition: color 0.4s;
+  }
+  .cv-line {
+    height: 2.5px;
+    background: #EFE5DC;
+    border-radius: 2px;
+    margin-bottom: 3px;
+  }
+  .cv-line.short { width: 70%; }
+  .cv-line.shorter { width: 45%; }
+  .cv-chip {
+    display: inline-block;
+    padding: 2px 5px;
+    background: var(--cv-c, #4A3F3F);
+    color: var(--cream);
+    border-radius: 3px;
+    font-size: 6px;
+    margin: 1px 2px 1px 0;
+    transition: background 0.4s;
+  }
+
+  .cv-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cv-tool-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #998;
+  }
+  .cv-palette {
+    display: flex;
+    gap: 5px;
+    padding: 7px 8px;
+    background: #F7F0EA;
+    border-radius: 8px;
+  }
+  .cv-palette span {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+  }
+  .cv-palette span.c1 { background: #4A3F3F; }
+  .cv-palette span.c2 { background: #8E7676; }
+  .cv-palette span.c3 { background: #B38B6C; }
+  .cv-palette span.c4 { background: #6E8B85; }
+  .cv-palette span.c5 { background: #C7A098; }
+  .cv-palette span::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    opacity: 0;
+  }
+  .cv-palette .c1::after { animation: cv-tick 20s infinite; animation-delay: -5s; }
+  .cv-palette .c2::after { animation: cv-tick 20s infinite; animation-delay: -6.2s; }
+  .cv-palette .c3::after { animation: cv-tick 20s infinite; animation-delay: -7.4s; }
+  .cv-palette .c4::after { animation: cv-tick 20s infinite; animation-delay: -8.6s; }
+  @keyframes cv-tick {
+    0%, 5% { opacity: 0; }
+    6%, 10% { opacity: 1; }
+    11%, 100% { opacity: 0; }
+  }
+
+  .cv-fonts { display: flex; flex-direction: column; gap: 3px; }
+  .cv-font {
+    padding: 5px 8px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    font-size: 8px;
+    color: #776;
+  }
+  .cv-font.active {
+    background: var(--accent);
+    color: var(--cream);
+    font-weight: 700;
+    border-color: var(--accent);
+  }
+  .cv-download {
+    margin-top: auto;
+    padding: 7px 8px;
+    background: var(--accent);
+    color: var(--cream);
+    border-radius: 6px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
   .demo-caption {
     position: absolute;
     left: 50%;
@@ -884,9 +1040,10 @@
     animation: caption-text 15s infinite;
   }
   @keyframes caption-text {
-    0%, 30%, 100% { content: '⚡ Progreso y logros en tiempo real'; }
-    34%, 63% { content: '💬 Feedback entre sesiones'; }
-    67%, 97% { content: '📅 Agenda sesiones y deja notas'; }
+    0%, 22%, 100% { content: '⚡ Progreso y logros en tiempo real'; }
+    25%, 47% { content: '💬 Feedback entre sesiones'; }
+    50%, 72% { content: '📅 Agenda sesiones y deja notas'; }
+    75%, 97% { content: '🎨 CV totalmente personalizable'; }
   }
   .method h2 em { color: var(--accent-soft); }
   .method p {
@@ -1723,6 +1880,61 @@
               <div class="session-notes-text">
                 <span class="es-only">Quiero preparar ejemplos STAR para entrevistas senior</span>
                 <span class="en-only">I want to prep STAR examples for senior interviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-scene s4">
+            <div class="demo-h">
+              <span class="es-only">Documentos · Editor de CV</span>
+              <span class="en-only">Documents · CV Editor</span>
+            </div>
+            <div class="cv-editor">
+              <div class="cv-preview">
+                <div class="cv-photo"></div>
+                <div class="cv-header">
+                  <div class="cv-name">Juan J. Borregales</div>
+                  <div class="cv-role">Director General</div>
+                </div>
+                <div class="cv-section-label">
+                  <span class="es-only">EXPERIENCIA</span>
+                  <span class="en-only">EXPERIENCE</span>
+                </div>
+                <div class="cv-line"></div>
+                <div class="cv-line short"></div>
+                <div class="cv-line"></div>
+                <div class="cv-section-label">
+                  <span class="es-only">COMPETENCIAS</span>
+                  <span class="en-only">SKILLS</span>
+                </div>
+                <span class="cv-chip">P&amp;L</span>
+                <span class="cv-chip">B2B</span>
+                <span class="cv-chip">Lean</span>
+              </div>
+              <div class="cv-tools">
+                <div class="cv-tool-label">
+                  <span class="es-only">Paleta</span>
+                  <span class="en-only">Palette</span>
+                </div>
+                <div class="cv-palette">
+                  <span class="c1"></span>
+                  <span class="c2"></span>
+                  <span class="c3"></span>
+                  <span class="c4"></span>
+                  <span class="c5"></span>
+                </div>
+                <div class="cv-tool-label">
+                  <span class="es-only">Tipografía</span>
+                  <span class="en-only">Typography</span>
+                </div>
+                <div class="cv-fonts">
+                  <div class="cv-font active">DM Serif</div>
+                  <div class="cv-font">Montserrat</div>
+                </div>
+                <div class="cv-download">
+                  <span class="es-only">↓ Descargar PDF</span>
+                  <span class="en-only">↓ Download PDF</span>
+                </div>
               </div>
             </div>
           </div>
