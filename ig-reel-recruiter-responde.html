@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reel IG · Cómo contesta un recruiter a tu CV · Micaela Jairedin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #8E7676;
+    --accent-deep: #6B5959;
+    --accent-soft: #C7A098;
+    --bg: #F5EBE4;
+    --cream: #FAF4EF;
+    --ink: #4A3F3F;
+    --line: #E5D5CC;
+    --white: #FFFFFF;
+    --red: #C4635A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; padding: 24px;
+    font-family: 'Open Sans', system-ui, sans-serif;
+    color: #ccc; gap: 16px;
+  }
+  .hint { max-width: 1080px; font-size: 14px; text-align: center; line-height: 1.6; }
+  .hint strong { color: #fff; }
+
+  .reel {
+    width: 1080px; height: 1920px;
+    background: linear-gradient(180deg, var(--bg) 0%, #EFE5DC 60%, var(--cream) 100%);
+    position: relative; overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    color: var(--ink);
+    display: flex; flex-direction: column;
+  }
+  .reel::before {
+    content: ''; position: absolute; top: -260px; right: -220px;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(142,118,118,0.35), transparent 70%);
+  }
+  .reel::after {
+    content: ''; position: absolute; bottom: -280px; left: -220px;
+    width: 750px; height: 750px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(199,160,152,0.3), transparent 70%);
+  }
+
+  .top { padding: 100px 80px 30px; text-align: center; position: relative; z-index: 2; }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px; font-weight: 800;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+  }
+  .headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 96px; line-height: 0.98;
+    letter-spacing: -3px; color: var(--ink); margin-bottom: 18px;
+  }
+  .headline em { color: var(--accent); font-style: normal; }
+  .sub {
+    font-size: 26px; color: var(--accent-deep);
+    line-height: 1.4; max-width: 900px; margin: 0 auto;
+    font-weight: 500; font-style: italic;
+  }
+
+  .stage {
+    flex: 1;
+    padding: 30px 60px 0;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 28px;
+  }
+
+  /* Recruiter avatar + timer */
+  .recruiter {
+    display: flex; align-items: center; gap: 20px;
+    background: var(--white);
+    padding: 18px 26px;
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgba(74,63,63,0.12);
+    border: 1px solid var(--line);
+  }
+  .recruiter-avatar {
+    width: 54px; height: 54px; border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #F5DBC7, #E8C5AD);
+    border: 2px solid var(--accent);
+  }
+  .recruiter-avatar svg { display: block; width: 100%; height: 100%; }
+  .recruiter-meta { display: flex; flex-direction: column; }
+  .recruiter-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 18px; color: var(--ink);
+  }
+  .recruiter-role {
+    font-size: 13px; color: var(--accent); letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .timer {
+    margin-left: 10px;
+    padding: 8px 14px;
+    background: var(--accent);
+    color: var(--cream);
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+  .timer::before { content: '⏱ '; }
+
+  /* CV arriving */
+  .cv-thumb {
+    width: 320px;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 22px 26px;
+    box-shadow: 0 20px 50px rgba(74,63,63,0.2);
+    border: 2px solid var(--line);
+    position: relative;
+  }
+  .cv-thumb::before {
+    content: 'CV recibido';
+    position: absolute;
+    top: -14px; left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 800;
+    background: var(--accent);
+    color: var(--cream);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .cv-thumb-photo {
+    width: 50px; height: 50px;
+    background: #D9C6BC;
+    border-radius: 50%; margin: 4px auto 8px;
+  }
+  .cv-thumb .bar {
+    height: 6px; background: #ddd; border-radius: 3px; margin: 0 auto 6px;
+  }
+  .cv-thumb .bar.w1 { width: 65%; }
+  .cv-thumb .bar.w2 { width: 45%; }
+  .cv-thumb hr {
+    border: none; height: 1px;
+    background: #e8e8e8;
+    margin: 10px 0;
+  }
+  .cv-thumb .line {
+    height: 5px; background: #e8e8e8; border-radius: 3px; margin-bottom: 5px;
+  }
+  .cv-thumb .line.short { width: 75%; }
+
+  /* Thoughts (recruiter's reactions) */
+  .thoughts {
+    width: 100%;
+    max-width: 760px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .thought {
+    background: var(--white);
+    border-radius: 22px;
+    border-bottom-right-radius: 6px;
+    padding: 20px 26px;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ink);
+    align-self: flex-end;
+    max-width: 85%;
+    box-shadow: 0 12px 30px rgba(74,63,63,0.1);
+    display: flex; align-items: center; gap: 14px;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: thought-in 16s infinite;
+  }
+  .thought .icon {
+    font-size: 28px;
+  }
+  .thought:nth-of-type(1) { animation-delay: -14s; }
+  .thought:nth-of-type(2) { animation-delay: -12s; }
+  .thought:nth-of-type(3) { animation-delay: -10s; }
+  @keyframes thought-in {
+    0%, 5% { opacity: 0; transform: translateX(20px); }
+    8%, 62% { opacity: 1; transform: translateX(0); }
+    65%, 100% { opacity: 0; transform: translateX(-10px); }
+  }
+
+  /* Verdict */
+  .verdict {
+    margin-top: auto;
+    padding: 20px 30px;
+    background: var(--red);
+    color: #fff;
+    border-radius: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 14px 30px rgba(196,99,90,0.3);
+    opacity: 0;
+    animation: verdict-in 16s infinite;
+    animation-delay: -7s;
+  }
+  @keyframes verdict-in {
+    0%, 45% { opacity: 0; transform: scale(0.8); }
+    50%, 62% { opacity: 1; transform: scale(1); }
+    65%, 100% { opacity: 0; transform: scale(0.9); }
+  }
+
+  .bottom {
+    padding: 30px 80px 80px;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .final-line {
+    display: inline-block;
+    padding: 18px 34px;
+    background: var(--accent);
+    color: var(--cream);
+    border-radius: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 30px rgba(142,118,118,0.35);
+  }
+  .cta-domain {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 42px;
+    letter-spacing: -1px; color: var(--ink);
+  }
+  .cta-domain span { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="hint">
+  <strong>Cómo usar:</strong> Chrome → DevTools (F12) → móvil 1080×1920 → grabás 16 segundos con CleanShot / Kap / ScreenToGif. Muestra qué piensa un recruiter en los 7 seg que ve tu CV, termina con verdict "NEXT".
+</div>
+
+<div class="reel">
+  <div class="top">
+    <div class="eyebrow">Desde el otro lado</div>
+    <h1 class="headline">Cómo contesta un recruiter <em>a tu CV</em></h1>
+    <p class="sub">Spoiler: no te contesta.</p>
+  </div>
+
+  <div class="stage">
+    <div class="recruiter">
+      <div class="recruiter-avatar">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="32" fill="#F5DBC7"/>
+          <path d="M16 54 L16 46 Q32 38 48 46 L48 54 Z" fill="#8E7676"/>
+          <rect x="28" y="40" width="8" height="8" fill="#E8C5AD"/>
+          <circle cx="32" cy="32" r="13" fill="#E8C5AD"/>
+          <path d="M18 28 Q32 14 46 28 Q44 22 40 18 Q32 14 24 18 Q20 22 18 28 Z" fill="#6B4A3F"/>
+          <circle cx="27" cy="33" r="1.6" fill="#4A3F3F"/>
+          <circle cx="37" cy="33" r="1.6" fill="#4A3F3F"/>
+          <path d="M27 38 Q32 40 37 38" stroke="#4A3F3F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="recruiter-meta">
+        <div class="recruiter-name">Recruiter</div>
+        <div class="recruiter-role">Abriendo tu CV</div>
+      </div>
+      <div class="timer">7 seg</div>
+    </div>
+
+    <div class="cv-thumb">
+      <div class="cv-thumb-photo"></div>
+      <div class="bar w1" style="margin: 0 auto 6px;"></div>
+      <div class="bar w2" style="margin: 0 auto 10px;"></div>
+      <hr>
+      <div class="line"></div>
+      <div class="line short"></div>
+      <div class="line"></div>
+      <div class="line short"></div>
+    </div>
+
+    <div class="thoughts">
+      <div class="thought"><span class="icon">🤔</span>"¿Qué rol busca? No se entiende."</div>
+      <div class="thought"><span class="icon">😐</span>"Sin métricas ni logros concretos."</div>
+      <div class="thought"><span class="icon">⏭️</span>"Siguiente."</div>
+    </div>
+
+    <div class="verdict">Next · Descartado</div>
+  </div>
+
+  <div class="bottom">
+    <div class="final-line">No es personal. Es estructura.</div>
+    <div class="cta-domain">micaelajairedin<span>.com</span></div>
+  </div>
+</div>
+</body>
+</html>
