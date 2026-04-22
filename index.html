@@ -517,11 +517,16 @@
     gap: 8px;
   }
   .demo-sb-avatar {
-    width: 40px; height: 40px;
+    width: 42px; height: 42px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #D4AFA6, #A38176);
+    overflow: hidden;
+    background: linear-gradient(135deg, #F5DBC7, #E8C5AD);
     margin: 0 auto 2px;
+    border: 2px solid var(--cream);
+    box-shadow: 0 2px 6px rgba(142,118,118,0.25);
+    display: block;
   }
+  .demo-sb-avatar svg { display: block; width: 100%; height: 100%; }
   .demo-sb-name {
     text-align: center;
     font-weight: 700;
@@ -897,16 +902,20 @@
     margin-bottom: 6px;
     transition: border-color 0.4s;
   }
-  .cv-name {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 9px;
-    color: var(--ink);
+  .cv-name-bar {
+    height: 6px;
+    width: 62%;
+    margin: 2px auto 3px;
+    background: var(--ink);
+    border-radius: 3px;
   }
-  .cv-role {
-    font-size: 7px;
-    color: #998;
-    margin-top: 1px;
+  .cv-role-bar {
+    height: 3.5px;
+    width: 42%;
+    margin: 0 auto 5px;
+    background: var(--ink-muted);
+    border-radius: 2px;
+    opacity: 0.55;
   }
   .cv-section-label {
     font-family: 'Montserrat', sans-serif;
@@ -1511,7 +1520,38 @@
     .authority-grid { grid-template-columns: 1fr; gap: 40px; }
     .authority-photo-wrap { max-width: 240px; }
     .method .container { grid-template-columns: 1fr; gap: 50px; }
-    .demo-frame { max-width: 440px; margin: 0 auto; }
+    .demo-frame { max-width: 480px; margin: 0 auto; }
+  }
+  @media (max-width: 600px) {
+    .demo-body { grid-template-columns: 95px 1fr; }
+    .demo-sidebar { padding: 10px 7px; gap: 6px; }
+    .demo-sb-avatar { width: 34px; height: 34px; }
+    .demo-sb-name { font-size: 9px; }
+    .demo-sb-week { font-size: 7px; }
+    .demo-sb-actions-label { font-size: 7px; }
+    .demo-sb-medal { padding: 5px 3px; }
+    .demo-sb-medal-icon { font-size: 13px; }
+    .demo-sb-medal-label { font-size: 6.5px; letter-spacing: 0.8px; }
+    .demo-sb-medal-next { font-size: 6px; }
+    .demo-sb-item { padding: 4px 6px; font-size: 8px; gap: 3px; }
+    .demo-sb-item .ic { font-size: 8px; width: 8px; }
+    .demo-scene { padding: 14px 14px; }
+    .demo-h { font-size: 12px; margin-bottom: 10px; }
+    .demo-step { font-size: 8px; padding: 5px 2px; }
+    .demo-medal-text strong { font-size: 11px; }
+    .demo-medal-text span { font-size: 8px; }
+    .demo-msg { font-size: 9.5px; padding: 6px 10px; }
+    .session-book-title { font-size: 11px; }
+    .session-book-sub { font-size: 8px; }
+    .session-book-btn { font-size: 9px; padding: 5px 10px; }
+    .session-notes-text { font-size: 9px; }
+    .cv-palette span { width: 14px; height: 14px; }
+    .cv-name-bar { height: 6px; }
+    .cv-chip { font-size: 5.5px; padding: 2px 4px; }
+  }
+  @media (max-width: 400px) {
+    .demo-body { grid-template-columns: 1fr; }
+    .demo-sidebar { display: none; }
     .method, .testimonials { padding: 70px 20px; }
     .fit { padding: 70px 20px; }
     .fit-grid { grid-template-columns: 1fr; }
@@ -1654,6 +1694,10 @@
         <span class="es-only">Mentoría en<br>dos idiomas</span>
         <span class="en-only">Mentorship in<br>both languages</span>
       </div>
+      <div class="trust-item"><strong>Coach</strong>
+        <span class="es-only">Ontológica<br>certificada</span>
+        <span class="en-only">Certified<br>ontological coach</span>
+      </div>
     </div>
   </div>
 </div>
@@ -1758,7 +1802,20 @@
       </div>
       <div class="demo-body">
         <aside class="demo-sidebar">
-          <div class="demo-sb-avatar"></div>
+          <div class="demo-sb-avatar">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="32" fill="#F5DBC7"/>
+              <path d="M18 52 L18 46 Q32 38 46 46 L46 52 Z" fill="#8E7676"/>
+              <rect x="28" y="40" width="8" height="8" fill="#E8C5AD"/>
+              <circle cx="32" cy="32" r="13" fill="#E8C5AD"/>
+              <path d="M19 30 C19 19 25 15 32 15 C39 15 45 19 45 30 C44 27 42 24 39 24 C39 22 36 20 32 20 C28 20 25 22 25 24 C22 24 20 27 19 30 Z" fill="#4A3F3F"/>
+              <circle cx="27" cy="33" r="1.6" fill="#4A3F3F"/>
+              <circle cx="37" cy="33" r="1.6" fill="#4A3F3F"/>
+              <path d="M27 38 Q32 42 37 38" stroke="#4A3F3F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+              <circle cx="23" cy="36" r="1.8" fill="#F5A698" opacity="0.5"/>
+              <circle cx="41" cy="36" r="1.8" fill="#F5A698" opacity="0.5"/>
+            </svg>
+          </div>
           <div class="demo-sb-name">Hola, Juan</div>
           <div class="demo-sb-week">Semana 3/5</div>
           <div class="demo-sb-actions-label">
@@ -1893,8 +1950,8 @@
               <div class="cv-preview">
                 <div class="cv-photo"></div>
                 <div class="cv-header">
-                  <div class="cv-name">Juan J. Borregales</div>
-                  <div class="cv-role">Director General</div>
+                  <div class="cv-name-bar"></div>
+                  <div class="cv-role-bar"></div>
                 </div>
                 <div class="cv-section-label">
                   <span class="es-only">EXPERIENCIA</span>
@@ -1903,6 +1960,13 @@
                 <div class="cv-line"></div>
                 <div class="cv-line short"></div>
                 <div class="cv-line"></div>
+                <div class="cv-line shorter"></div>
+                <div class="cv-section-label">
+                  <span class="es-only">EDUCACIÓN</span>
+                  <span class="en-only">EDUCATION</span>
+                </div>
+                <div class="cv-line short"></div>
+                <div class="cv-line shorter"></div>
                 <div class="cv-section-label">
                   <span class="es-only">COMPETENCIAS</span>
                   <span class="en-only">SKILLS</span>
@@ -1910,6 +1974,7 @@
                 <span class="cv-chip">P&amp;L</span>
                 <span class="cv-chip">B2B</span>
                 <span class="cv-chip">Lean</span>
+                <span class="cv-chip">SaaS</span>
               </div>
               <div class="cv-tools">
                 <div class="cv-tool-label">
@@ -2061,8 +2126,8 @@
           <span class="es-only">Soy Micaela Jairedin.</span>
           <span class="en-only">I'm Micaela Jairedin.</span>
         </h2>
-        <p class="es-only">Especialista en adquisición de talento. He pasado <strong>más de 8 años al otro lado del proceso</strong>: decidiendo quién pasa a entrevista y quién no, gestionando <strong>más de 800 procesos</strong> en Europa y LATAM, en empresas como <strong>Amazon</strong>.</p>
-        <p class="en-only">Talent acquisition specialist. I've spent <strong>8+ years on the other side of the process</strong>: deciding who moves to the interview stage and who doesn't, running <strong>800+ processes</strong> across Europe and LATAM, at companies like <strong>Amazon</strong>.</p>
+        <p class="es-only">Especialista en adquisición de talento y <strong>coach ontológica certificada</strong>. He pasado <strong>más de 8 años al otro lado del proceso</strong>: decidiendo quién pasa a entrevista y quién no, gestionando <strong>más de 800 procesos</strong> en Europa y LATAM, en empresas como <strong>Amazon</strong>.</p>
+        <p class="en-only">Talent acquisition specialist and <strong>certified ontological coach</strong>. I've spent <strong>8+ years on the other side of the process</strong>: deciding who moves to the interview stage and who doesn't, running <strong>800+ processes</strong> across Europe and LATAM, at companies like <strong>Amazon</strong>.</p>
         <p class="es-only">He visto cientos de perfiles capaces quedarse fuera — no por falta de experiencia, sino por cómo estaban posicionados. Mi trabajo es resolver exactamente eso, trabajando en <strong>español o inglés</strong> según lo que necesites.</p>
         <p class="en-only">I've seen hundreds of capable profiles get left out — not for lack of experience, but for how they were positioned. My job is solving exactly that, in <strong>Spanish or English</strong>, whichever you need.</p>
         <div class="authority-badge">No es motivación. Es estrategia.</div>
