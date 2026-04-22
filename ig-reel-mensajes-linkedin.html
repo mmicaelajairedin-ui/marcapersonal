@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reel IG · 3 mensajes que los recruiters odian · Micaela Jairedin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #8E7676;
+    --accent-deep: #6B5959;
+    --accent-soft: #C7A098;
+    --bg: #F5EBE4;
+    --cream: #FAF4EF;
+    --ink: #4A3F3F;
+    --line: #E5D5CC;
+    --white: #FFFFFF;
+    --red: #C4635A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; padding: 24px;
+    font-family: 'Open Sans', system-ui, sans-serif;
+    color: #ccc; gap: 16px;
+  }
+  .hint { max-width: 1080px; font-size: 14px; text-align: center; line-height: 1.6; }
+  .hint strong { color: #fff; }
+
+  .reel {
+    width: 1080px; height: 1920px;
+    background: linear-gradient(180deg, #0F7B7D 0%, #0A5E60 100%);
+    position: relative; overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    color: var(--cream);
+    display: flex; flex-direction: column;
+  }
+  .reel::before {
+    content: ''; position: absolute; top: -260px; right: -220px;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+  }
+  .reel::after {
+    content: ''; position: absolute; bottom: -280px; left: -220px;
+    width: 750px; height: 750px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,99,90,0.22), transparent 70%);
+  }
+
+  .top { padding: 100px 80px 40px; text-align: center; position: relative; z-index: 2; }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px; font-weight: 800;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 28px;
+  }
+  .headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 100px; line-height: 0.95;
+    letter-spacing: -3px; color: var(--cream); margin-bottom: 22px;
+  }
+  .headline em { color: #FFD6C8; font-style: normal; }
+  .sub { font-size: 28px; color: rgba(250,244,239,0.8); line-height: 1.4; max-width: 900px; margin: 0 auto; font-weight: 500; }
+
+  .msgs {
+    flex: 1;
+    padding: 30px 80px 0;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .msg-wrap {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: msg-enter 18s infinite;
+  }
+  .msg-wrap:nth-child(1) { animation-delay: -17s; }
+  .msg-wrap:nth-child(2) { animation-delay: -14s; }
+  .msg-wrap:nth-child(3) { animation-delay: -11s; }
+  @keyframes msg-enter {
+    0%, 5% { opacity: 0; transform: translateY(20px); }
+    9%, 85% { opacity: 1; transform: translateY(0); }
+    88%, 100% { opacity: 0; transform: translateY(-10px); }
+  }
+  .msg-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--red);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .msg-num::before {
+    content: ''; width: 30px; height: 2px; background: var(--red);
+  }
+  .msg-bubble {
+    background: #fff;
+    border-radius: 22px;
+    border-bottom-left-radius: 6px;
+    padding: 26px 32px;
+    color: var(--ink);
+    font-size: 26px;
+    line-height: 1.4;
+    max-width: 88%;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  }
+  .msg-bubble::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 20px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #D4AFA6, #8E7676);
+  }
+  .msg-reason {
+    margin-top: 16px;
+    display: flex; align-items: center; gap: 12px;
+    color: var(--cream);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .msg-x {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--red); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .bottom {
+    padding: 40px 80px 90px;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .final-line {
+    display: inline-block;
+    padding: 18px 34px;
+    background: var(--cream);
+    color: var(--accent-deep);
+    border-radius: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .cta-domain {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 44px;
+    letter-spacing: -1px; color: var(--cream);
+  }
+  .cta-domain span { color: #FFD6C8; }
+</style>
+</head>
+<body>
+<div class="hint">
+  <strong>Cómo usar:</strong> Chrome → DevTools (F12) → móvil 1080×1920 → grabás 18 segundos con CleanShot / Kap / ScreenToGif. Pensado para voiceover narrando cada mensaje y por qué es un horror.
+</div>
+
+<div class="reel">
+  <div class="top">
+    <div class="eyebrow">Lo que no hay que escribir</div>
+    <h1 class="headline">3 mensajes que <em>los recruiters odian</em></h1>
+    <p class="sub">Los veo todos los días. Y los dejo sin contestar.</p>
+  </div>
+
+  <div class="msgs">
+    <div class="msg-wrap">
+      <div class="msg-num">Mensaje 01</div>
+      <div class="msg-bubble">"Hola! Busco oportunidades, ¿me pasás algo que tengas?"</div>
+      <div class="msg-reason"><span class="msg-x">×</span>Genérico. Pide sin aportar nada.</div>
+    </div>
+
+    <div class="msg-wrap">
+      <div class="msg-num">Mensaje 02</div>
+      <div class="msg-bubble">"Vi tu perfil. Necesito que me entrevistes hoy."</div>
+      <div class="msg-reason"><span class="msg-x">×</span>Exige sin contexto ni relación.</div>
+    </div>
+
+    <div class="msg-wrap">
+      <div class="msg-num">Mensaje 03</div>
+      <div class="msg-bubble">"Adjunto mi CV. ¿Podés pasarme contactos de tu empresa?"</div>
+      <div class="msg-reason"><span class="msg-x">×</span>Dumping. Cero intención de construir relación.</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="final-line">Escribir bien cambia todo</div>
+    <div class="cta-domain">micaelajairedin<span>.com</span></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reel IG · Mi método en 30 seg · Micaela Jairedin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #8E7676;
+    --accent-deep: #6B5959;
+    --accent-soft: #C7A098;
+    --bg: #F5EBE4;
+    --cream: #FAF4EF;
+    --ink: #4A3F3F;
+    --line: #E5D5CC;
+    --white: #FFFFFF;
+    --gold: #B38B6C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; padding: 24px;
+    font-family: 'Open Sans', system-ui, sans-serif;
+    color: #ccc; gap: 16px;
+  }
+  .hint { max-width: 1080px; font-size: 14px; text-align: center; line-height: 1.6; }
+  .hint strong { color: #fff; }
+
+  .reel {
+    width: 1080px; height: 1920px;
+    background: linear-gradient(180deg, var(--bg) 0%, #EFE5DC 45%, #E6D3CB 100%);
+    position: relative; overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    color: var(--ink);
+    display: flex; flex-direction: column;
+  }
+  .reel::before {
+    content: ''; position: absolute; top: -260px; left: -220px;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(199,160,152,0.4), transparent 70%);
+  }
+  .reel::after {
+    content: ''; position: absolute; bottom: -280px; right: -220px;
+    width: 750px; height: 750px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(142,118,118,0.3), transparent 70%);
+  }
+
+  .top { padding: 100px 80px 30px; text-align: center; position: relative; z-index: 2; }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px; font-weight: 800;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: ''; width: 50px; height: 2px; background: var(--accent); opacity: 0.5;
+  }
+  .headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 104px; line-height: 0.95;
+    letter-spacing: -3px; color: var(--ink); margin-bottom: 18px;
+  }
+  .headline em { color: var(--accent); font-style: normal; }
+  .sub {
+    font-size: 28px; color: var(--accent-deep);
+    line-height: 1.4; max-width: 880px; margin: 0 auto; font-weight: 500;
+  }
+
+  .stages {
+    flex: 1;
+    padding: 30px 70px 0;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .stage {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 34px 38px;
+    box-shadow: 0 20px 50px rgba(74,63,63,0.14);
+    border: 1px solid var(--line);
+    display: flex; align-items: flex-start; gap: 26px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: stage-enter 18s infinite;
+  }
+  .stage:nth-child(1) { animation-delay: -17s; }
+  .stage:nth-child(2) { animation-delay: -14s; }
+  .stage:nth-child(3) { animation-delay: -11s; }
+  @keyframes stage-enter {
+    0%, 5% { opacity: 0; transform: translateY(24px); }
+    9%, 82% { opacity: 1; transform: translateY(0); }
+    85%, 100% { opacity: 0; transform: translateY(-8px); }
+  }
+
+  .stage-num {
+    flex-shrink: 0;
+    width: 96px; height: 96px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 20px rgba(142,118,118,0.3);
+  }
+  .stage-content { flex: 1; }
+  .stage-week {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .stage-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .stage-desc {
+    font-size: 20px;
+    color: var(--accent-deep);
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+  .stage-outputs {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .stage-output {
+    background: var(--bg);
+    color: var(--accent-deep);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--line);
+  }
+
+  .bottom {
+    padding: 30px 80px 80px;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .pricing {
+    display: inline-flex; gap: 24px; align-items: baseline;
+    padding: 18px 30px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74,63,63,0.1);
+    margin-bottom: 22px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .pricing strong { color: var(--accent); font-weight: 800; font-size: 24px; margin-right: 6px; }
+  .pricing .it { font-size: 18px; color: var(--ink); }
+  .pricing .sep { color: var(--line); }
+  .cta-tag { font-size: 24px; color: var(--accent-deep); margin-bottom: 10px; font-weight: 500; }
+  .cta-domain {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 44px;
+    letter-spacing: -1px; color: var(--ink);
+  }
+  .cta-domain span { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="hint">
+  <strong>Cómo usar:</strong> Chrome → DevTools (F12) → móvil 1080×1920 → grabás 18 segundos con CleanShot / Kap / ScreenToGif. Pensado para narrar vos las 3 etapas en voz propia.
+</div>
+
+<div class="reel">
+  <div class="top">
+    <div class="eyebrow">4–6 semanas · 1:1</div>
+    <h1 class="headline">Mi método <em>en 30 seg.</em></h1>
+    <p class="sub">Tres etapas pensadas para que empiecen a llamarte.</p>
+  </div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-num">01</div>
+      <div class="stage-content">
+        <div class="stage-week">Semanas 1–2</div>
+        <div class="stage-title">Perfil y posicionamiento</div>
+        <div class="stage-desc">Tu CV y LinkedIn reposicionados desde la mirada del recruiter.</div>
+        <div class="stage-outputs">
+          <span class="stage-output">✓ CV</span>
+          <span class="stage-output">✓ LinkedIn</span>
+          <span class="stage-output">✓ Informe</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-num">02</div>
+      <div class="stage-content">
+        <div class="stage-week">Semanas 3–4</div>
+        <div class="stage-title">Network y búsqueda</div>
+        <div class="stage-desc">Dónde aplicar, cómo activar tu red y escribir a recruiters que sí responden.</div>
+        <div class="stage-outputs">
+          <span class="stage-output">✓ Estrategia</span>
+          <span class="stage-output">✓ Plantillas de outreach</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-num">03</div>
+      <div class="stage-content">
+        <div class="stage-week">Semanas 5–6</div>
+        <div class="stage-title">Storytelling y entrevistas</div>
+        <div class="stage-desc">Narrativa STAR, simulación de entrevista y tu Playbook para 30 días.</div>
+        <div class="stage-outputs">
+          <span class="stage-output">✓ STAR</span>
+          <span class="stage-output">✓ Mock interview</span>
+          <span class="stage-output">✓ Playbook</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="pricing">
+      <span class="it"><strong>120€</strong>sesión</span>
+      <span class="sep">·</span>
+      <span class="it"><strong>400€</strong>paquete</span>
+    </div>
+    <div class="cta-tag">Mentoría 1:1 desde la mirada del recruiter</div>
+    <div class="cta-domain">micaelajairedin<span>.com</span></div>
+  </div>
+</div>
+</body>
+</html>
