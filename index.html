@@ -1603,6 +1603,36 @@
   }
   .cta-reassurance span { margin: 0 8px; opacity: 0.5; }
 
+  /* Scarcity pill above hero CTAs */
+  .cta-scarcity {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 6px 12px;
+    background: rgba(142, 118, 118, 0.08);
+    border: 1px solid rgba(142, 118, 118, 0.25);
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--accent-deep);
+    letter-spacing: 0.15px;
+  }
+  .cta-scarcity::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c0392b;
+    box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.6);
+    animation: scarcity-pulse 2s infinite;
+  }
+  @keyframes scarcity-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(192, 57, 43, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0); }
+  }
+
   /* MOBILE sticky CTA */
   .mobile-sticky-cta {
     display: none;
@@ -1672,10 +1702,14 @@ a.cite-name:hover { opacity: 0.7; }
       <h1 class="en-only">If you have experience and nobody calls back, <em>you're not the problem.</em></h1>
       <p class="hero-sub es-only">Llevo más de 17 años en RR.HH., recruiting y liderazgo de equipos. Vi desde dentro qué define quién pasa el primer filtro y quién no. Hoy trabajo 1:1 contigo para reposicionar tu CV, tu LinkedIn y tu forma de entrevistar — en español o inglés — hasta que empiecen a llamarte.</p>
       <p class="hero-sub en-only">I've spent 17+ years in HR, recruiting and team leadership. I saw from the inside what defines who passes the first filter and who doesn't. Today I work 1:1 with you to reposition your CV, your LinkedIn and how you interview — in Spanish or English — until the calls start coming in.</p>
+      <div class="cta-scarcity">
+        <span class="es-only">Plazas limitadas esta semana</span>
+        <span class="en-only">Limited spots this week</span>
+      </div>
       <div class="hero-ctas">
         <a href="#agenda" class="btn-primary">
-          <span class="es-only">Reservar llamada gratis</span>
-          <span class="en-only">Book free call</span>
+          <span class="es-only">Agenda tu diagnóstico gratis</span>
+          <span class="en-only">Book your free diagnosis</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="#mentoria" class="btn-secondary">
@@ -1684,8 +1718,8 @@ a.cite-name:hover { opacity: 0.7; }
         </a>
       </div>
       <div class="cta-reassurance">
-        <span class="es-only">30 min<span>·</span>Sin tarjeta<span>·</span>Sin compromiso</span>
-        <span class="en-only">30 min<span>·</span>No credit card<span>·</span>No commitment</span>
+        <span class="es-only">30 min<span>·</span>Sin costo<span>·</span>Sin compromiso</span>
+        <span class="en-only">30 min<span>·</span>Free<span>·</span>No commitment</span>
       </div>
     </div>
     <div class="hero-video-wrap">
