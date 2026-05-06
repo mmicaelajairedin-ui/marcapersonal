@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carousel LinkedIn · Pathway · Coaches</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --pw-bosque:#2D6A4F;
+  --pw-sendero:#52B788;
+  --pw-amanecer:#E9C46A;
+  --pw-carbon:#1B2E26;
+  --pw-niebla:#FAFDF9;
+  --pw-borde:rgba(45,106,79,.12);
+  --pw-serif:'Fraunces',Georgia,serif;
+  --pw-sans:'Inter',-apple-system,sans-serif;
+  --pw-rojo:#C0756E;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#222;font-family:var(--pw-sans);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px;}
+
+.toolbar{position:fixed;top:0;left:0;right:0;background:#1a1a1a;color:#fff;padding:10px 20px;z-index:100;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12px;}
+.toolbar strong{color:#fff;margin-right:auto;}
+.toolbar button{padding:5px 9px;background:#333;color:#fff;border:1px solid #555;border-radius:5px;cursor:pointer;font-size:11px;font-family:var(--pw-sans);}
+.toolbar button.on{background:var(--pw-bosque);border-color:var(--pw-sendero);}
+.toolbar .hint{color:#aaa;font-size:11px;width:100%;}
+
+.slides{margin-top:80px;display:flex;flex-direction:column;gap:24px;align-items:center;}
+
+/* Each slide is 1080x1080 (1:1) */
+.slide{
+  width:1080px;height:1080px;
+  background:var(--pw-niebla);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  transform-origin:top center;
+  border-radius:32px;
+  box-shadow:0 16px 48px rgba(0,0,0,.4);
+}
+@media(max-width:1140px){.slide{transform:scale(.55);margin-bottom:-486px;}}
+@media(max-width:600px){.slide{transform:scale(.32);margin-bottom:-734px;}}
+
+.slide-label{
+  position:absolute;top:20px;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,.95);color:var(--pw-carbon);
+  padding:6px 14px;border-radius:100px;font-size:13px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;font-family:var(--pw-sans);z-index:5;
+}
+
+body.solo .slide{display:none;}
+body.solo .slide.active{display:flex;}
+
+body.clean .toolbar{display:none;}
+body.clean .slide-label{display:none;}
+body.clean .slides{margin-top:0;}
+
+/* Page footer (bottom of every slide except cover) */
+.s-footer{
+  position:absolute;bottom:36px;left:60px;right:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:18px;color:#5A5A55;font-family:var(--pw-sans);
+}
+.s-footer .brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--pw-bosque);}
+.s-footer .pgnum{font-weight:600;}
+
+/* === SLIDE 1 — COVER === */
+.s1{
+  background:linear-gradient(135deg,#2D6A4F 0%,#1B2E26 100%);
+  align-items:center;justify-content:center;text-align:center;padding:100px 80px;
+}
+.s1 .eyebrow{
+  color:var(--pw-amanecer);font-size:22px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:48px;
+}
+.s1 h1{
+  font-family:var(--pw-serif);color:#fff;font-weight:500;
+  font-size:90px;line-height:1.05;letter-spacing:-2px;margin-bottom:48px;
+}
+.s1 h1 em{font-style:italic;color:var(--pw-amanecer);}
+.s1 .sub{
+  color:rgba(255,255,255,.85);font-size:30px;line-height:1.4;max-width:780px;
+}
+.s1 .swipe{
+  position:absolute;bottom:60px;color:var(--pw-amanecer);font-size:20px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:10px;
+}
+.s1 .swipe span{font-size:32px;animation:slideRight 1.8s ease-in-out infinite;}
+@keyframes slideRight{
+  0%,100%{transform:translateX(0);}
+  50%{transform:translateX(12px);}
+}
+
+/* === SLIDE 2-9 — CONTENT === */
+.s-content{padding:90px 80px 110px;}
+.s-content .num{
+  font-family:var(--pw-serif);font-size:24px;font-weight:500;color:var(--pw-bosque);
+  letter-spacing:.1em;margin-bottom:20px;
+}
+.s-content h2{
+  font-family:var(--pw-serif);color:var(--pw-carbon);font-weight:500;
+  font-size:64px;line-height:1.1;letter-spacing:-1.5px;margin-bottom:36px;
+}
+.s-content h2 em{font-style:italic;color:var(--pw-bosque);}
+.s-content p{
+  font-size:28px;line-height:1.55;color:#3A3A35;margin-bottom:24px;
+}
+.s-content p strong{color:var(--pw-carbon);font-weight:600;}
+
+/* SLIDE 2 (PAIN) */
+.s2{background:#FAFDF9;}
+.s2 .pain-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;
+}
+.s2 .pain-tool{
+  background:#fff;border:1.5px solid var(--pw-borde);border-radius:18px;
+  padding:24px 22px;display:flex;align-items:center;gap:14px;
+}
+.s2 .pain-tool .ico{font-size:44px;}
+.s2 .pain-tool .nm{font-size:24px;font-weight:600;color:var(--pw-carbon);}
+
+/* SLIDE 3 (COST) */
+.s3{
+  background:linear-gradient(180deg,#FAFDF9 0%,rgba(192,117,110,.06) 100%);
+  align-items:center;justify-content:center;text-align:center;padding:100px 80px;
+}
+.s3 .big{
+  font-family:var(--pw-serif);font-size:240px;line-height:1;font-weight:500;
+  color:var(--pw-rojo);letter-spacing:-6px;margin-bottom:32px;
+}
+.s3 .label{font-size:32px;color:var(--pw-carbon);font-weight:600;line-height:1.3;max-width:720px;margin-bottom:24px;}
+.s3 .small{font-size:22px;color:#5A5A55;max-width:680px;line-height:1.5;}
+
+/* SLIDE 4 (SOLUTION) */
+.s4{
+  background:linear-gradient(180deg,#FAFDF9 0%,rgba(82,183,136,.08) 100%);
+  align-items:center;justify-content:center;text-align:center;padding:100px 80px;
+}
+.s4 .badge{
+  display:inline-block;background:var(--pw-bosque);color:#fff;font-size:20px;
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:10px 22px;border-radius:100px;margin-bottom:36px;font-family:var(--pw-sans);
+}
+.s4 h2{
+  font-family:var(--pw-serif);color:var(--pw-carbon);font-weight:500;
+  font-size:120px;line-height:1.0;letter-spacing:-3px;margin-bottom:32px;
+}
+.s4 h2 .dot{color:var(--pw-sendero);}
+.s4 .sub{font-size:32px;color:#3A3A35;line-height:1.4;max-width:780px;margin-bottom:20px;}
+.s4 .pills{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px;}
+.s4 .pill{
+  background:#fff;border:2px solid var(--pw-borde);border-radius:100px;
+  padding:14px 24px;font-size:22px;font-weight:600;color:var(--pw-carbon);
+  font-family:var(--pw-sans);
+}
+
+/* SLIDES 5-8 (FEATURES) */
+.feat{background:#FAFDF9;}
+.feat .icon-box{
+  width:120px;height:120px;border-radius:28px;display:flex;align-items:center;
+  justify-content:center;font-size:64px;margin-bottom:32px;
+}
+.feat-1 .icon-box{background:rgba(82,183,136,.18);}
+.feat-2 .icon-box{background:rgba(45,106,79,.12);}
+.feat-3 .icon-box{background:rgba(233,196,106,.22);}
+.feat-4 .icon-box{background:rgba(82,183,136,.12);}
+.feat .feat-list{margin-top:24px;}
+.feat .feat-list li{
+  font-size:24px;color:#3A3A35;list-style:none;margin-bottom:14px;
+  display:flex;align-items:flex-start;gap:14px;line-height:1.4;
+}
+.feat .feat-list li::before{
+  content:'✓';color:var(--pw-bosque);font-weight:700;font-size:28px;flex-shrink:0;
+}
+
+/* SLIDE 9 (PRICING) */
+.s9{
+  background:#fff;align-items:center;justify-content:center;text-align:center;padding:80px;
+}
+.s9 .price-card{
+  background:linear-gradient(180deg,#FAFDF9 0%,rgba(82,183,136,.08) 100%);
+  border:2px solid var(--pw-borde);border-radius:28px;padding:60px 48px;
+  max-width:760px;width:100%;
+}
+.s9 .price-eyebrow{
+  font-size:18px;color:var(--pw-bosque);font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;margin-bottom:20px;
+}
+.s9 .price-num{
+  font-family:var(--pw-serif);font-size:200px;line-height:1;color:var(--pw-carbon);
+  font-weight:500;letter-spacing:-5px;margin-bottom:8px;
+}
+.s9 .price-num span{font-size:48px;color:#5A5A55;letter-spacing:0;}
+.s9 .price-sub{font-size:24px;color:#5A5A55;margin-bottom:32px;}
+.s9 .feats{
+  display:flex;flex-direction:column;gap:14px;margin-top:32px;text-align:left;
+}
+.s9 .feats li{
+  font-size:24px;color:#3A3A35;list-style:none;display:flex;
+  align-items:flex-start;gap:12px;line-height:1.4;
+}
+.s9 .feats li::before{
+  content:'✓';color:var(--pw-sendero);font-weight:700;font-size:28px;
+}
+
+/* SLIDE 10 (CTA) */
+.s10{
+  background:linear-gradient(135deg,#1B2E26 0%,#2D6A4F 100%);
+  align-items:center;justify-content:center;text-align:center;padding:80px;
+}
+.s10 .badge{
+  display:inline-block;background:var(--pw-amanecer);color:var(--pw-carbon);
+  font-size:22px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:12px 26px;border-radius:100px;margin-bottom:48px;
+}
+.s10 h2{
+  font-family:var(--pw-serif);color:#fff;font-weight:500;
+  font-size:96px;line-height:1.0;letter-spacing:-2.5px;margin-bottom:36px;
+}
+.s10 h2 em{font-style:italic;color:var(--pw-amanecer);}
+.s10 .sub{
+  color:rgba(255,255,255,.85);font-size:28px;line-height:1.5;
+  max-width:760px;margin-bottom:48px;
+}
+.s10 .cta-btn{
+  background:#fff;color:var(--pw-bosque);padding:28px 48px;
+  border-radius:20px;font-size:32px;font-weight:700;
+  font-family:var(--pw-sans);letter-spacing:-.5px;display:inline-block;
+}
+.s10 .signature{
+  position:absolute;bottom:60px;left:0;right:0;text-align:center;
+  color:rgba(255,255,255,.55);font-size:18px;
+}
+
+.s-footer.dark{color:rgba(255,255,255,.6);}
+.s-footer.dark .brand{color:var(--pw-amanecer);}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <strong>Carousel LinkedIn · 10 slides 1080×1080</strong>
+  <button onclick="show(1)">1·Cover</button>
+  <button onclick="show(2)">2·Dolor</button>
+  <button onclick="show(3)">3·Costo</button>
+  <button onclick="show(4)">4·Pathway</button>
+  <button onclick="show(5)">5·IA</button>
+  <button onclick="show(6)">6·Portal</button>
+  <button onclick="show(7)">7·Pago</button>
+  <button onclick="show(8)">8·Integración</button>
+  <button onclick="show(9)">9·Precio</button>
+  <button onclick="show(10)">10·CTA</button>
+  <button onclick="showAll()">Todos</button>
+  <button onclick="toggleClean()" id="cleanBtn">Modo screenshot</button>
+  <span class="hint">Tip: cliqueá cada slide → "Modo screenshot" → Cmd+Shift+4 (o herramienta de captura) sobre el cuadrado.</span>
+</div>
+
+<div class="slides">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide s1" data-n="1">
+    <span class="slide-label">Slide 1 / 10</span>
+    <div class="eyebrow">Para coaches de carrera</div>
+    <h1>Cómo escalar<br>tu coaching<br><em>sin morir</em><br>en el intento</h1>
+    <div class="sub">Una plataforma que reemplaza 5 herramientas y le da a tu cliente un portal con tu marca</div>
+    <div class="swipe">Deslizá <span>→</span></div>
+  </div>
+
+  <!-- SLIDE 2: PAIN -->
+  <div class="slide s2 s-content" data-n="2">
+    <span class="slide-label">Slide 2 / 10</span>
+    <div class="num">El día a día</div>
+    <h2>Para 1 cliente,<br>usás <em>5 apps</em>.</h2>
+    <p>Y cada vez que entra uno nuevo, repetís todo. <strong>Tu negocio depende de tu memoria.</strong></p>
+    <div class="pain-grid">
+      <div class="pain-tool"><span class="ico">📝</span><span class="nm">Notion / Drive</span></div>
+      <div class="pain-tool"><span class="ico">💬</span><span class="nm">WhatsApp</span></div>
+      <div class="pain-tool"><span class="ico">📅</span><span class="nm">Calendly</span></div>
+      <div class="pain-tool"><span class="ico">📊</span><span class="nm">Excel / Sheets</span></div>
+    </div>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">2/10</div></div>
+  </div>
+
+  <!-- SLIDE 3: COST -->
+  <div class="slide s3" data-n="3">
+    <span class="slide-label">Slide 3 / 10</span>
+    <div class="big">5–8h</div>
+    <div class="label">por cliente al mes en tareas operativas</div>
+    <div class="small">Si tenés 10 clientes, son <strong>50 a 80 horas mensuales</strong> que no podés cobrar como coaching.</div>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">3/10</div></div>
+  </div>
+
+  <!-- SLIDE 4: SOLUTION -->
+  <div class="slide s4" data-n="4">
+    <span class="slide-label">Slide 4 / 10</span>
+    <div class="badge">La solución</div>
+    <h2>Pathway<span class="dot">.</span></h2>
+    <div class="sub">Un panel para vos. Un portal con <strong>tu marca</strong> para tu cliente.</div>
+    <div class="pills">
+      <div class="pill">CV con IA</div>
+      <div class="pill">ATS Score</div>
+      <div class="pill">LinkedIn</div>
+      <div class="pill">Entrevistas</div>
+      <div class="pill">Portal del cliente</div>
+    </div>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">4/10</div></div>
+  </div>
+
+  <!-- SLIDE 5: FEATURE 1 (IA) -->
+  <div class="slide feat feat-1 s-content" data-n="5">
+    <span class="slide-label">Slide 5 / 10</span>
+    <div class="icon-box">⚡</div>
+    <div class="num">Feature 1</div>
+    <h2>IA que arma<br>todo en <em>30 seg.</em></h2>
+    <p>Tu cliente completa un formulario una sola vez. La IA genera:</p>
+    <ul class="feat-list">
+      <li>Informe de situación con plan de 4 semanas</li>
+      <li>CV optimizado para ATS</li>
+      <li>Carta de presentación personalizada</li>
+      <li>Análisis del perfil de LinkedIn</li>
+    </ul>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">5/10</div></div>
+  </div>
+
+  <!-- SLIDE 6: FEATURE 2 (PORTAL) -->
+  <div class="slide feat feat-2 s-content" data-n="6">
+    <span class="slide-label">Slide 6 / 10</span>
+    <div class="icon-box">🎯</div>
+    <div class="num">Feature 2</div>
+    <h2>Tu cliente vive<br>en <em>tu portal.</em></h2>
+    <p>Con tu logo, tus colores, tu nombre — no el de Pathway:</p>
+    <ul class="feat-list">
+      <li>Roadmap de 4 semanas con su progreso</li>
+      <li>Sus documentos editables (CV, carta)</li>
+      <li>Empleos sugeridos por sector y ciudad</li>
+      <li>Sistema de medallas que los engancha</li>
+    </ul>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">6/10</div></div>
+  </div>
+
+  <!-- SLIDE 7: FEATURE 3 (PAYMENT) -->
+  <div class="slide feat feat-3 s-content" data-n="7">
+    <span class="slide-label">Slide 7 / 10</span>
+    <div class="icon-box">💚</div>
+    <div class="num">Feature 3</div>
+    <h2>Vos cobrás.<br>Pathway <em>no toca</em><br>esa plata.</h2>
+    <p>Tu Stripe + tu Calendly = pagos directos a vos. Sin comisiones por venta.</p>
+    <ul class="feat-list">
+      <li>Calendly y Stripe ya integrados</li>
+      <li>Cobros one-off o suscripciones</li>
+      <li>Dashboard de pagos por cliente</li>
+    </ul>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">7/10</div></div>
+  </div>
+
+  <!-- SLIDE 8: FEATURE 4 (TIME-SAVERS) -->
+  <div class="slide feat feat-4 s-content" data-n="8">
+    <span class="slide-label">Slide 8 / 10</span>
+    <div class="icon-box">⏱️</div>
+    <div class="num">Feature 4</div>
+    <h2>Plantillas<br><em>en 1 click.</em></h2>
+    <p>Lo que mandabas a mano, ahora con un botón:</p>
+    <ul class="feat-list">
+      <li>7 plantillas de mensajes (bienvenida, CV listo, recordatorio…)</li>
+      <li>WhatsApp directo con el nombre del cliente cargado</li>
+      <li>Mismo email en español o inglés con un click</li>
+      <li>Recursos por semana ya organizados</li>
+    </ul>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">8/10</div></div>
+  </div>
+
+  <!-- SLIDE 9: PRICING -->
+  <div class="slide s9" data-n="9">
+    <span class="slide-label">Slide 9 / 10</span>
+    <div class="price-card">
+      <div class="price-eyebrow">Plan único</div>
+      <div class="price-num">€58<span>/mes</span></div>
+      <div class="price-sub">14 días gratis · Sin permanencia · Cancelás cuando quieras</div>
+      <ul class="feats">
+        <li>Candidatos ilimitados</li>
+        <li>Todas las herramientas con IA</li>
+        <li>Portal del cliente con tu marca</li>
+        <li>Calendly y Stripe integrados</li>
+        <li>Soporte prioritario</li>
+      </ul>
+    </div>
+    <div class="s-footer"><div class="brand">▲ Pathway</div><div class="pgnum">9/10</div></div>
+  </div>
+
+  <!-- SLIDE 10: CTA -->
+  <div class="slide s10" data-n="10">
+    <span class="slide-label">Slide 10 / 10</span>
+    <div class="badge">Probala</div>
+    <h2>14 días<br><em>gratis.</em></h2>
+    <div class="sub">Demo de 11 minutos sin agendar nada. Después decidís si seguís.</div>
+    <div class="cta-btn">pathwaycareercoach.com</div>
+    <div class="signature">Por Micaela Jairedin · Coach de carrera</div>
+  </div>
+
+</div>
+
+<script>
+function show(n){
+  document.body.classList.add('solo');
+  document.querySelectorAll('.slide').forEach(function(f){
+    f.classList.toggle('active',f.dataset.n==n);
+  });
+  document.querySelectorAll('.toolbar button').forEach(function(b){b.classList.remove('on');});
+  if(event && event.target) event.target.classList.add('on');
+}
+function showAll(){
+  document.body.classList.remove('solo');
+  document.querySelectorAll('.toolbar button').forEach(function(b){b.classList.remove('on');});
+  if(event && event.target) event.target.classList.add('on');
+}
+function toggleClean(){
+  document.body.classList.toggle('clean');
+  var btn=document.getElementById('cleanBtn');
+  btn.textContent=document.body.classList.contains('clean')?'Salir screenshot':'Modo screenshot';
+}
+</script>
+</body>
+</html>

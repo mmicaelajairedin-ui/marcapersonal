@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reel · Pathway Coach · Demo</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --pw-bosque:#2D6A4F;
+  --pw-sendero:#52B788;
+  --pw-amanecer:#E9C46A;
+  --pw-carbon:#1B2E26;
+  --pw-niebla:#FAFDF9;
+  --pw-serif:'Fraunces',Georgia,serif;
+  --pw-sans:'Inter',-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#222;font-family:var(--pw-sans);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px;}
+
+/* Toolbar */
+.toolbar{position:fixed;top:0;left:0;right:0;background:#1a1a1a;color:#fff;padding:10px 20px;z-index:100;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;}
+.toolbar button{padding:6px 12px;background:#333;color:#fff;border:1px solid #555;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--pw-sans);}
+.toolbar button.on{background:var(--pw-bosque);border-color:var(--pw-sendero);}
+.toolbar .hint{color:#aaa;margin-left:auto;font-size:11px;}
+
+/* Frame container */
+.frames{margin-top:60px;display:flex;flex-direction:column;gap:24px;align-items:center;}
+
+/* Each frame is 1080x1920 (9:16). Scaled to fit width on small screens. */
+.frame{
+  width:1080px;height:1920px;
+  background:var(--pw-niebla);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  transform-origin:top center;
+  border-radius:48px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+@media(max-width:1140px){
+  .frame{transform:scale(.5);margin-bottom:-960px;}
+}
+@media(max-width:600px){
+  .frame{transform:scale(.32);margin-bottom:-1306px;}
+}
+
+/* Frame badge */
+.frame-label{
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,.95);color:var(--pw-carbon);
+  padding:8px 16px;border-radius:100px;
+  font-size:14px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;font-family:var(--pw-sans);
+  z-index:5;
+}
+
+/* Single-frame mode hides others */
+body.solo .frame{display:none;}
+body.solo .frame.active{display:flex;}
+
+/* Hide toolbar on print/screenshot */
+body.clean .toolbar{display:none;}
+body.clean .frame-label{display:none;}
+body.clean .frames{margin-top:0;}
+
+/* === FRAME 1 (HOOK) === */
+.f1{
+  background:linear-gradient(180deg,#1B2E26 0%,#2D6A4F 50%,#52B788 100%);
+  align-items:center;justify-content:center;text-align:center;padding:120px 80px;
+}
+.f1 .eyebrow{
+  color:var(--pw-amanecer);font-size:32px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;margin-bottom:48px;
+  font-family:var(--pw-sans);
+}
+.f1 h1{
+  font-family:var(--pw-serif);color:#fff;font-weight:500;
+  font-size:140px;line-height:1.05;letter-spacing:-3px;margin-bottom:60px;
+}
+.f1 h1 em{font-style:italic;color:var(--pw-amanecer);}
+.f1 .sub{
+  color:rgba(255,255,255,.85);font-size:36px;line-height:1.4;
+  max-width:760px;font-weight:400;
+}
+.f1 .arrow{
+  position:absolute;bottom:120px;font-size:80px;color:var(--pw-amanecer);
+  animation:bounce 1.8s ease-in-out infinite;
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(20px);}
+}
+
+/* === FRAME 2 (PAIN) === */
+.f2{
+  background:#FAFDF9;
+  padding:140px 80px 120px;text-align:center;
+}
+.f2 .eyebrow{
+  display:inline-block;background:rgba(192,117,110,.15);color:#C0756E;
+  font-size:28px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px 28px;border-radius:100px;margin-bottom:60px;
+  font-family:var(--pw-sans);
+}
+.f2 h2{
+  font-family:var(--pw-serif);color:var(--pw-carbon);font-weight:500;
+  font-size:96px;line-height:1.1;letter-spacing:-2px;margin-bottom:80px;
+}
+.f2 .tools{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:760px;margin:0 auto;
+}
+.f2 .tool{
+  background:#fff;border:2px solid #E5E0DD;border-radius:24px;
+  padding:36px 28px;text-align:center;font-family:var(--pw-sans);
+}
+.f2 .tool .ico{font-size:64px;margin-bottom:16px;}
+.f2 .tool .nm{font-size:30px;font-weight:600;color:var(--pw-carbon);}
+.f2 .closing{
+  margin-top:80px;font-family:var(--pw-serif);font-style:italic;
+  color:var(--pw-carbon);font-size:48px;line-height:1.3;
+}
+.f2 .closing strong{color:#C0756E;font-weight:600;}
+
+/* === FRAME 3 (SOLUCIÓN) === */
+.f3{
+  background:linear-gradient(180deg,#FAFDF9 0%,rgba(82,183,136,.08) 100%);
+  padding:140px 80px 80px;text-align:center;
+}
+.f3 .badge{
+  display:inline-block;background:var(--pw-bosque);color:#fff;
+  font-size:24px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:14px 28px;border-radius:100px;margin-bottom:48px;
+  font-family:var(--pw-sans);
+}
+.f3 h2{
+  font-family:var(--pw-serif);color:var(--pw-carbon);font-weight:500;
+  font-size:120px;line-height:1.0;letter-spacing:-3px;margin-bottom:32px;
+}
+.f3 h2 .dot{color:var(--pw-sendero);}
+.f3 .sub{
+  font-size:34px;color:#5A5A55;line-height:1.4;margin-bottom:60px;
+  max-width:760px;margin-left:auto;margin-right:auto;
+}
+.f3 .mockup{
+  background:#fff;border-radius:32px;padding:32px 28px;
+  box-shadow:0 30px 80px rgba(45,106,79,.2),0 8px 24px rgba(0,0,0,.08);
+  margin:0 auto;max-width:840px;text-align:left;
+  border:1px solid rgba(45,106,79,.1);
+}
+.f3 .mockup-title{
+  font-family:var(--pw-serif);font-size:38px;font-weight:500;
+  color:var(--pw-carbon);margin-bottom:24px;
+}
+.f3 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+.f3 .stat{
+  background:rgba(82,183,136,.08);border-radius:14px;padding:18px 16px;
+  border:1px solid rgba(45,106,79,.12);
+}
+.f3 .stat .num{font-family:var(--pw-serif);font-size:48px;color:var(--pw-bosque);font-weight:500;line-height:1;}
+.f3 .stat .lbl{font-size:18px;color:#5A5A55;margin-top:6px;font-family:var(--pw-sans);}
+.f3 .row{
+  display:flex;align-items:center;gap:14px;padding:18px 20px;
+  background:rgba(82,183,136,.04);border:1px solid rgba(45,106,79,.08);
+  border-radius:14px;margin-bottom:10px;
+}
+.f3 .av{
+  width:54px;height:54px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;color:#fff;
+  font-weight:700;font-size:22px;font-family:var(--pw-sans);
+}
+.f3 .row-name{flex:1;font-size:24px;font-weight:600;color:var(--pw-carbon);font-family:var(--pw-sans);}
+.f3 .row-week{font-size:18px;color:#5A5A55;font-family:var(--pw-sans);}
+.f3 .pill{
+  font-size:16px;font-weight:700;padding:6px 16px;border-radius:100px;
+  margin-left:12px;font-family:var(--pw-sans);
+}
+.f3 .pill.ok{background:rgba(82,183,136,.18);color:var(--pw-bosque);}
+.f3 .pill.prog{background:rgba(233,196,106,.25);color:#8C6F2A;}
+.f3 .pill.new{background:rgba(45,106,79,.12);color:var(--pw-bosque);}
+
+/* === FRAME 4 (CTA) === */
+.f4{
+  background:linear-gradient(180deg,#1B2E26 0%,#2D6A4F 100%);
+  align-items:center;justify-content:center;text-align:center;padding:140px 80px;
+}
+.f4 .badge{
+  display:inline-block;background:var(--pw-amanecer);color:var(--pw-carbon);
+  font-size:28px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px 28px;border-radius:100px;margin-bottom:60px;
+  font-family:var(--pw-sans);
+}
+.f4 h2{
+  font-family:var(--pw-serif);color:#fff;font-weight:500;
+  font-size:140px;line-height:1.0;letter-spacing:-3px;margin-bottom:40px;
+}
+.f4 h2 em{font-style:italic;color:var(--pw-amanecer);}
+.f4 .price{
+  font-family:var(--pw-sans);color:rgba(255,255,255,.9);
+  font-size:44px;line-height:1.4;margin-bottom:80px;font-weight:500;
+}
+.f4 .price strong{color:var(--pw-amanecer);font-weight:700;}
+.f4 .url{
+  background:#fff;color:var(--pw-bosque);padding:32px 48px;
+  border-radius:24px;font-size:42px;font-weight:700;
+  font-family:var(--pw-sans);letter-spacing:-.5px;
+  display:inline-block;
+}
+.f4 .footer{
+  position:absolute;bottom:80px;left:0;right:0;text-align:center;
+  color:rgba(255,255,255,.6);font-size:24px;font-family:var(--pw-sans);
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <strong style="color:#fff;">Reel Pathway · 4 frames 1080×1920</strong>
+  <button onclick="show(1)">Frame 1 · Hook</button>
+  <button onclick="show(2)">Frame 2 · Dolor</button>
+  <button onclick="show(3)">Frame 3 · Solución</button>
+  <button onclick="show(4)">Frame 4 · CTA</button>
+  <button onclick="showAll()">Ver todos</button>
+  <button onclick="toggleClean()" id="cleanBtn">Modo screenshot</button>
+  <span class="hint">Tip: usá "Modo screenshot" + Cmd+Shift+4 para capturar limpio</span>
+</div>
+
+<div class="frames">
+
+  <!-- FRAME 1 — HOOK -->
+  <div class="frame f1" data-n="1">
+    <span class="frame-label">Frame 1 / 4</span>
+    <div class="eyebrow">¿Coach de carrera?</div>
+    <h1>¿Estás haciendo<br>todo <em>a mano?</em></h1>
+    <div class="sub">Si te suena familiar, esto te va a interesar</div>
+    <div class="arrow">↓</div>
+  </div>
+
+  <!-- FRAME 2 — PAIN -->
+  <div class="frame f2" data-n="2">
+    <span class="frame-label">Frame 2 / 4</span>
+    <div class="eyebrow">El día a día</div>
+    <h2>5 herramientas<br>para 1 cliente</h2>
+    <div class="tools">
+      <div class="tool"><div class="ico">📝</div><div class="nm">Notion / Drive</div></div>
+      <div class="tool"><div class="ico">💬</div><div class="nm">WhatsApp</div></div>
+      <div class="tool"><div class="ico">📅</div><div class="nm">Calendly</div></div>
+      <div class="tool"><div class="ico">📊</div><div class="nm">Excel / Sheets</div></div>
+    </div>
+    <div class="closing">Resultado:<br><strong>5 a 8 horas perdidas</strong><br>por cliente al mes.</div>
+  </div>
+
+  <!-- FRAME 3 — SOLUTION -->
+  <div class="frame f3" data-n="3">
+    <span class="frame-label">Frame 3 / 4</span>
+    <div class="badge">La solución</div>
+    <h2>Pathway<span class="dot">.</span></h2>
+    <div class="sub">Todo en una sola pantalla. Con tu marca.</div>
+    <div class="mockup">
+      <div class="mockup-title">Resumen</div>
+      <div class="stats">
+        <div class="stat"><div class="num">12</div><div class="lbl">Clientes activos</div></div>
+        <div class="stat"><div class="num">8h</div><div class="lbl">Ahorradas/sem</div></div>
+        <div class="stat"><div class="num">4.9★</div><div class="lbl">Rating</div></div>
+      </div>
+      <div class="row">
+        <div class="av" style="background:#52B788;">AR</div>
+        <div class="row-name">Ana Rodríguez</div>
+        <div class="row-week">Semana 2</div>
+        <span class="pill prog">En curso</span>
+      </div>
+      <div class="row">
+        <div class="av" style="background:#2D6A4F;">DM</div>
+        <div class="row-name">Diego Moreno</div>
+        <div class="row-week">Semana 4</div>
+        <span class="pill ok">Completo</span>
+      </div>
+      <div class="row">
+        <div class="av" style="background:#E9C46A;color:#1B2E26;">JP</div>
+        <div class="row-name">Julia Pérez</div>
+        <div class="row-week">Semana 1</div>
+        <span class="pill new">Nueva</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRAME 4 — CTA -->
+  <div class="frame f4" data-n="4">
+    <span class="frame-label">Frame 4 / 4</span>
+    <div class="badge">14 días gratis</div>
+    <h2>Probala<br>sin <em>compromiso</em></h2>
+    <div class="price"><strong>€58/mes</strong> · cancelás cuando quieras</div>
+    <div class="url">pathwaycareercoach.com</div>
+    <div class="footer">Plataforma para coaches de carrera</div>
+  </div>
+
+</div>
+
+<script>
+function show(n){
+  document.body.classList.add('solo');
+  document.querySelectorAll('.frame').forEach(function(f){
+    f.classList.toggle('active',f.dataset.n==n);
+  });
+  document.querySelectorAll('.toolbar button').forEach(function(b){b.classList.remove('on');});
+  if(event && event.target) event.target.classList.add('on');
+}
+function showAll(){
+  document.body.classList.remove('solo');
+  document.querySelectorAll('.toolbar button').forEach(function(b){b.classList.remove('on');});
+  if(event && event.target) event.target.classList.add('on');
+}
+function toggleClean(){
+  document.body.classList.toggle('clean');
+  var btn=document.getElementById('cleanBtn');
+  btn.textContent=document.body.classList.contains('clean')?'Salir screenshot':'Modo screenshot';
+}
+</script>
+</body>
+</html>
