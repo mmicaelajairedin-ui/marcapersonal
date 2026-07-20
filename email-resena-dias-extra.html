@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="x-apple-disable-message-reformatting" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light only" />
+<title>Deja tu reseña y suma días a tu proceso</title>
+<!--
+  ============================================================================
+  EMAIL · "Deja una reseña → suma [X] días a tu acompañamiento"
+  Campaña de reactivación para contactos inactivos · Micaela Jairedin
+  ----------------------------------------------------------------------------
+  CÓMO PERSONALIZARLO (buscá y reemplazá):
+    {{NOMBRE}}          → nombre del contacto (merge tag de tu plataforma de envío)
+    {{DIAS_EXTRA}}      → cantidad de días que regalás (default: 7)
+    {{LINK_RESENA}}     → URL para dejar la reseña (Google, LinkedIn recomendación, etc.)
+    {{LINK_CONFIRMAR}}  → URL del mini-form "Ya dejé mi reseña" (ver nota abajo)
+    {{LINK_BAJA}}       → URL de darse de baja (obligatorio por ley de correo)
+
+  NOTA IMPORTANTE SOBRE "DETECTAR QUIÉN DEJÓ RESEÑA":
+    Google/LinkedIn NO permiten saber qué reseña corresponde a qué email.
+    El flujo fiable es: dejan la reseña → tocan "Ya la dejé" → completan un
+    form de 20 seg (nombre + captura/link) → vos verificás y sumás los días.
+    Ese form es {{LINK_CONFIRMAR}} (Google Forms / Tally / Typeform sirven).
+    Con Zapier o Make podés automatizar: nueva respuesta del form → email de
+    confirmación + registro de los días extra.
+  ============================================================================
+-->
+<style>
+  /* Estilos solo para clientes que soportan <style>; el diseño base va inline */
+  body { margin:0; padding:0; width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+  table { border-collapse:collapse !important; }
+  img { border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+  a { text-decoration:none; }
+  .btn:hover { background:#6B5959 !important; }
+  @media only screen and (max-width:600px) {
+    .container { width:100% !important; }
+    .px { padding-left:24px !important; padding-right:24px !important; }
+    .h1 { font-size:26px !important; line-height:1.25 !important; }
+    .hero-pad { padding:40px 24px 32px 24px !important; }
+    .stack { display:block !important; width:100% !important; }
+    .btn-td { padding-left:24px !important; padding-right:24px !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background:#F5EBE4; color:#4A3F3F; font-family:'Open Sans', Helvetica, Arial, sans-serif;">
+
+  <!-- Preheader (texto de vista previa, oculto) -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; font-size:1px; line-height:1px; color:#F5EBE4;">
+    Hace un tiempo que no nos vemos. Tengo una idea para que retomes justo donde lo dejaste. &#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5EBE4;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+
+        <!-- CONTENEDOR -->
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background:#FFFFFF; border-radius:24px; overflow:hidden; box-shadow:0 20px 60px rgba(142,118,118,0.12);">
+
+          <!-- HEADER / MARCA -->
+          <tr>
+            <td align="center" style="padding:28px 40px 0 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-family:'Montserrat', Helvetica, Arial, sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.5px; color:#4A3F3F;">
+                    Micaela&nbsp;<span style="color:#8E7676; font-weight:500;">Jairedin</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- HERO -->
+          <tr>
+            <td class="hero-pad" style="padding:44px 40px 36px 40px;">
+              <p style="margin:0 0 18px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#8E7676;">
+                Un regalo para vos
+              </p>
+              <h1 class="h1" style="margin:0 0 20px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:32px; line-height:1.2; font-weight:700; color:#4A3F3F;">
+                Hola {{NOMBRE}}, sumemos <span style="color:#8E7676;">{{DIAS_EXTRA}} días</span> a tu proceso.
+              </h1>
+              <p style="margin:0 0 16px 0; font-size:16px; line-height:1.7; color:#4A3F3F;">
+                Hace un tiempo que no nos cruzamos por aquí, y me quedé pensando en vos. Tu búsqueda de empleo no tiene por qué quedar a medias.
+              </p>
+              <p style="margin:0; font-size:16px; line-height:1.7; color:#4A3F3F;">
+                Así que te propongo algo simple y mutuo: si me dejás una <strong>reseña honesta</strong> de tu experiencia, yo te <strong>regalo {{DIAS_EXTRA}} días extra</strong> de acompañamiento y soporte para que retomes justo donde lo dejaste.
+              </p>
+            </td>
+          </tr>
+
+          <!-- TARJETA OFERTA -->
+          <tr>
+            <td style="padding:0 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF4EF; border:1px solid #E5D5CC; border-radius:20px;">
+                <tr>
+                  <td style="padding:28px 30px;">
+                    <p style="margin:0 0 6px 0; font-size:20px; color:#B38B6C; letter-spacing:3px;">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                    <p style="margin:0 0 4px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:15px; font-weight:700; color:#4A3F3F;">
+                      Tu reseña vale {{DIAS_EXTRA}} días
+                    </p>
+                    <p style="margin:0; font-size:14px; line-height:1.6; color:#888888;">
+                      Tarda menos de 2 minutos y me ayuda muchísimo a que más personas se animen a dar el paso. A cambio, vos ganás tiempo.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- PASOS -->
+          <tr>
+            <td class="px" style="padding:36px 40px 8px 40px;">
+              <p style="margin:0 0 20px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#8E7676;">
+                Cómo funciona · 2 pasos
+              </p>
+
+              <!-- Paso 1 -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:18px;">
+                <tr>
+                  <td width="40" valign="top" style="width:40px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+                      <td width="30" height="30" align="center" valign="middle" style="width:30px; height:30px; background:#8E7676; border-radius:50%; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:14px; font-weight:700; color:#FFFFFF;">1</td>
+                    </tr></table>
+                  </td>
+                  <td valign="top" style="padding-left:14px;">
+                    <p style="margin:0 0 3px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:15px; font-weight:700; color:#4A3F3F;">Dejá tu reseña</p>
+                    <p style="margin:0; font-size:14px; line-height:1.6; color:#888888;">Contá en pocas líneas cómo fue tu experiencia. Con el link de abajo te toma un minuto.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Paso 2 -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
+                <tr>
+                  <td width="40" valign="top" style="width:40px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+                      <td width="30" height="30" align="center" valign="middle" style="width:30px; height:30px; background:#8E7676; border-radius:50%; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:14px; font-weight:700; color:#FFFFFF;">2</td>
+                    </tr></table>
+                  </td>
+                  <td valign="top" style="padding-left:14px;">
+                    <p style="margin:0 0 3px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:15px; font-weight:700; color:#4A3F3F;">Avisame que ya la dejaste</p>
+                    <p style="margin:0; font-size:14px; line-height:1.6; color:#888888;">Tocá &ldquo;Ya dejé mi reseña&rdquo;, cargás tu nombre y una captura, y activo tus {{DIAS_EXTRA}} días. Así de simple.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BOTONES CTA -->
+          <tr>
+            <td class="btn-td" align="center" style="padding:24px 40px 8px 40px;">
+              <!-- CTA principal -->
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                <tr>
+                  <td align="center" style="border-radius:100px; background:#8E7676;">
+                    <a href="{{LINK_RESENA}}" class="btn" target="_blank" rel="noopener" style="display:inline-block; padding:16px 40px; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:15px; font-weight:700; color:#FFFFFF; border-radius:100px;">
+                      Dejar mi reseña &#8594;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:4px 40px 4px 40px;">
+              <a href="{{LINK_CONFIRMAR}}" target="_blank" rel="noopener" style="display:inline-block; padding:10px 18px; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:14px; font-weight:600; color:#8E7676;">
+                Ya dejé mi reseña &#8594; sumar mis {{DIAS_EXTRA}} días
+              </a>
+            </td>
+          </tr>
+
+          <!-- CIERRE / FIRMA -->
+          <tr>
+            <td class="px" style="padding:28px 40px 8px 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="border-top:1px solid #E5D5CC; font-size:0; line-height:0;">&nbsp;</td></tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:16px 40px 40px 40px;">
+              <p style="margin:0 0 14px 0; font-size:16px; line-height:1.7; color:#4A3F3F;">
+                Y si en estos días algo se te complicó con la búsqueda, respondeme este mail y lo vemos juntas. Estoy de tu lado.
+              </p>
+              <p style="margin:0 0 2px 0; font-family:'Montserrat', Helvetica, Arial, sans-serif; font-size:16px; font-weight:700; color:#4A3F3F;">Micaela</p>
+              <p style="margin:0; font-size:13px; color:#888888;">Mentora de carrera &middot; +17 años en RR.HH. y recruiting</p>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="padding:26px 40px; background:#4A3F3F; border-radius:0 0 24px 24px;">
+              <p style="margin:0 0 10px 0; font-size:12px; line-height:1.6; color:rgba(250,244,239,0.75);">
+                Recibís este correo porque en algún momento empezaste tu proceso conmigo. Si preferís no recibir más, no hay problema.
+              </p>
+              <p style="margin:0; font-size:12px; color:rgba(250,244,239,0.55);">
+                <a href="mailto:mmicaela.jairedin@gmail.com" style="color:rgba(250,244,239,0.85); text-decoration:underline;">mmicaela.jairedin@gmail.com</a>
+                &nbsp;&middot;&nbsp;
+                <a href="{{LINK_BAJA}}" style="color:rgba(250,244,239,0.85); text-decoration:underline;">Darme de baja</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /CONTENEDOR -->
+
+        <p style="margin:20px 0 0 0; font-size:11px; color:#B7A79D;">Micaela Jairedin &middot; Mentoría 1:1 de búsqueda de empleo</p>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
