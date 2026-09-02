@@ -1,0 +1,22 @@
+# La versión inglesa (en.html) se GENERA desde index.html.
+# Sin esta comprobación, el script de guardia sería un fichero que nadie
+# ejecuta — y ahí es donde se pudrió registro-en.html en el repo de Pathway:
+# una copia hecha a mano que se quedó vieja y sirvió español a los ingleses
+# durante meses sin que saltara nada.
+name: El inglés está al día
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: en.html coincide con index.html
+        run: node scripts/check-en.js
