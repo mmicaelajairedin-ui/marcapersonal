@@ -1755,6 +1755,14 @@ a.cite-name:hover { opacity: 0.7; }
     <div>
       <a href="/">Inicio / Home</a>
       <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/mentoria"><span class="es-only">Mentoría</span><span class="en-only">Mentoring</span></a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/cv-ats">CV &amp; ATS</a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/entrevistas"><span class="es-only">Entrevistas</span><span class="en-only">Interviews</span></a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/sobre-mi"><span class="es-only">Sobre mí</span><span class="en-only">About</span></a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
       <a href="https://www.linkedin.com/in/micaelajl/" target="_blank">LinkedIn</a>
       <span style="margin: 0 10px; opacity: 0.4;">·</span>
       <a href="https://www.instagram.com/micaelajl.hr/" target="_blank">Instagram</a>
@@ -1770,6 +1778,14 @@ a.cite-name:hover { opacity: 0.7; }
     var saved = localStorage.getItem('lang');
     if (saved === 'en' || saved === 'es') {
       document.documentElement.lang = saved;
+    } else {
+      // Sin preferencia guardada, seguir al navegador. Antes se quedaba
+      // siempre en español: quien llegaba a /faq desde /en (la home inglesa,
+      // que ya no escribe localStorage) recibía la FAQ en español.
+      try {
+        var nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+        if (nav.indexOf('en') === 0) document.documentElement.lang = 'en';
+      } catch (e) {}
     }
   })();
   function toggleLang() {

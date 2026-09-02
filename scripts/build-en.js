@@ -80,8 +80,9 @@ function generar(html) {
   //    quedara, podría reescribir el idioma por debajo.
   s = s.replace(/<script>\s*\(function\(\) \{\s*var saved = localStorage[\s\S]*?<\/script>/, '');
 
-  // 7) Los enlaces internos van a su equivalente inglés.
-  s = s.replace(/href="\/faq"/g, 'href="/faq"');
+  // 7) Los enlaces internos van a su equivalente inglés. Sin esto, la home
+  //    inglesa mandaba a /mentoria, /cv-ats… en español.
+  s = s.replace(/href="\/(mentoria|cv-ats|entrevistas|sobre-mi)"/g, 'href="/en/$1"');
 
   s = avisoDeGenerado(s);
   return s;
@@ -126,9 +127,48 @@ function avisoDeGenerado(s) {
   return s.replace(/^<!doctype html>/i, m => m + '\n' + aviso);
 }
 
-if (require.main === module) {
-  const src = fs.readFileSync(path.join(RAIZ, 'index.html'), 'utf8');
-  fs.writeFileSync(path.join(RAIZ, 'en.html'), generar(src));
-  console.log('en.html generado desde index.html');
+/* Las páginas de servicio comparten el mismo mecanismo (.es-only/.en-only),
+   así que se generan igual. Cambia el destino: la home inglesa vive en /en y
+   las demás en /en/<slug>. */
+function generarPagina(html, slug) {
+  let s = html;
+  s = s.replace(/<html lang="es">/, '<html lang="en">');
+  s = quitarPorClase(s, 'es-only');
+  // El selector de idioma apunta a la versión española, no a la inglesa.
+  s = s.replace(
+    new RegExp(`<a class="lang-toggle" href="/en/${slug}"[^>]*>[\\s\\S]*?</a>`),
+    `<a class="lang-toggle" href="/${slug}" hreflang="es" aria-label="Ver en español">EN <span class="dim">/ ES</span></a>`
+  );
+  s = s.replace(/(<meta property="og:locale" content=")[^"]*(")/, '$1en_US$2');
+  s = s.replace(/(<link rel="canonical" href="https:\/\/micaelajairedin\.com)\/([^"]*)(")/, `$1/en/${slug}$3`);
+  s = s.replace(/(<meta property="og:url" content="https:\/\/micaelajairedin\.com)\/([^"]*)(")/, `$1/en/${slug}$3`);
+  // Los enlaces internos y el logo apuntan al árbol inglés.
+  s = s.replace(/href="\/(mentoria|cv-ats|entrevistas|sobre-mi)"/g, 'href="/en/$1"');
+  s = s.replace(/<a href="\/">Micaela/g, '<a href="/en">Micaela');
+  s = s.replace(/href="\/#agenda"/g, 'href="/en#agenda"');
+  s = s.replace(/<a href="\/">Inicio<\/a>/g, '<a href="/en">Home</a>');
+  return avisoDeGenerado(s);
 }
-module.exports = { generar };
+
+// index.html → en.html (servida en /en). Las de servicio → en/<slug>.html.
+const PAGINAS = ['mentoria', 'cv-ats', 'entrevistas', 'sobre-mi'];
+
+function construirTodo() {
+  const salidas = {};
+  salidas['en.html'] = generar(fs.readFileSync(path.join(RAIZ, 'index.html'), 'utf8'));
+  for (const slug of PAGINAS) {
+    const src = fs.readFileSync(path.join(RAIZ, slug + '.html'), 'utf8');
+    salidas[path.join('en', slug + '.html')] = generarPagina(src, slug);
+  }
+  return salidas;
+}
+
+if (require.main === module) {
+  const salidas = construirTodo();
+  fs.mkdirSync(path.join(RAIZ, 'en'), { recursive: true });
+  for (const [rel, contenido] of Object.entries(salidas)) {
+    fs.writeFileSync(path.join(RAIZ, rel), contenido);
+    console.log('generado', rel);
+  }
+}
+module.exports = { generar, generarPagina, construirTodo };
