@@ -9,14 +9,14 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%238E7676'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' dominant-baseline='central' font-family='system-ui,-apple-system,sans-serif' font-weight='800' font-size='40' fill='%23FAF4EF'%3EM%3C/text%3E%3C/svg%3E">
 <style>
   :root {
-    --accent: #8E7676;
+    --accent: #7B6565;
     --accent-deep: #6B5959;
     --accent-soft: #C7A098;
     --bg: #F5EBE4;
     --bg-soft: #FFFFFF;
     --bg-dark: #4A3F3F;
     --ink: #4A3F3F;
-    --ink-muted: #888888;
+    --ink-muted: #6B6B6B;
     --line: #E5D5CC;
     --cream: #FAF4EF;
     --white: #FFFFFF;
@@ -1602,6 +1602,67 @@ a.cite-name:hover { opacity: 0.7; }
     .faq-cta { padding: 32px 20px; }
   }
 </style>
+
+<link rel="canonical" href="https://micaelajairedin.com/faq">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://micaelajairedin.com/faq">
+<meta property="og:site_name" content="Micaela Jairedin">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Preguntas frecuentes · Mentoría 1:1 con Micaela Jairedin">
+<meta property="og:description" content="Precio, idioma, plazos y qué pasa en la llamada gratis. Lo que siempre me preguntan antes de empezar la mentoría.">
+<meta property="og:image" content="https://micaelajairedin.com/assets/micaela-authority.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://micaelajairedin.com/assets/micaela-authority.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://micaelajairedin.com/faq#faq",
+  "inLanguage": "es",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta la mentoría?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tengo distintos paquetes según tu momento (sesión suelta o mentoría completa de 4 a 6 semanas). En la llamada gratis de 30 min revisamos tu situación y te propongo el que tenga más sentido — sin venta agresiva, sin compromiso. Lo que invertís se paga con el primer mes de un salario nuevo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona si hace meses que no tengo resultados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Cuanto más tiempo llevas sin respuesta, más claro se ve qué hay que ajustar. No se trata de intentarlo más — se trata de cambiar cómo estás jugando el proceso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué idioma trabajamos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El que prefieras. Trabajo en español e inglés indistintamente. Si apuntas a roles internacionales, preparamos tu perfil y tus entrevistas directamente en inglés."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en verse resultado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del punto de partida, pero el objetivo es que veas cambios concretos en las primeras semanas (respuestas, mensajes de reclutadores, entrevistas) y mejora real en los 30 días del Playbook."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa en la llamada gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Son 30 minutos para conocernos, entender tu situación y ver si la mentoría encaja. Si no encaja, te digo qué podrías hacer por tu cuenta. Sin venta agresiva."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1694,6 +1755,14 @@ a.cite-name:hover { opacity: 0.7; }
     <div>
       <a href="/">Inicio / Home</a>
       <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/mentoria"><span class="es-only">Mentoría</span><span class="en-only">Mentoring</span></a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/cv-ats">CV &amp; ATS</a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/entrevistas"><span class="es-only">Entrevistas</span><span class="en-only">Interviews</span></a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
+      <a href="/sobre-mi"><span class="es-only">Sobre mí</span><span class="en-only">About</span></a>
+      <span style="margin: 0 10px; opacity: 0.4;">·</span>
       <a href="https://www.linkedin.com/in/micaelajl/" target="_blank">LinkedIn</a>
       <span style="margin: 0 10px; opacity: 0.4;">·</span>
       <a href="https://www.instagram.com/micaelajl.hr/" target="_blank">Instagram</a>
@@ -1709,6 +1778,14 @@ a.cite-name:hover { opacity: 0.7; }
     var saved = localStorage.getItem('lang');
     if (saved === 'en' || saved === 'es') {
       document.documentElement.lang = saved;
+    } else {
+      // Sin preferencia guardada, seguir al navegador. Antes se quedaba
+      // siempre en español: quien llegaba a /faq desde /en (la home inglesa,
+      // que ya no escribe localStorage) recibía la FAQ en español.
+      try {
+        var nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+        if (nav.indexOf('en') === 0) document.documentElement.lang = 'en';
+      } catch (e) {}
     }
   })();
   function toggleLang() {

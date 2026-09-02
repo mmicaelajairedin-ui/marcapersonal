@@ -1,0 +1,176 @@
+/* pagina.css — estilos compartidos por las páginas de servicio
+   (/mentoria, /cv-ats, /entrevistas, /sobre-mi).
+
+   No toca index.html ni faq.html: esas llevan su CSS en línea y quedan como
+   están. Aquí los mismos tokens de la marca, en un fichero aparte para que
+   las cuatro páginas se vean iguales y se editen en un solo sitio. */
+
+:root {
+  --accent: #7B6565;
+  --accent-deep: #6B5959;
+  --accent-soft: #C7A098;
+  --bg: #F5EBE4;
+  --bg-soft: #FFFFFF;
+  --bg-dark: #4A3F3F;
+  --ink: #4A3F3F;
+  --ink-muted: #6B6B6B;
+  --line: #E5D5CC;
+  --cream: #FAF4EF;
+  --white: #FFFFFF;
+  --gold: #B38B6C;
+  --shadow-sm: 0 4px 12px rgba(142, 118, 118, 0.06);
+  --shadow-md: 0 10px 30px rgba(142, 118, 118, 0.08);
+}
+
+/* El idioma lo fija <html lang>, igual que en la home. */
+html[lang="es"] .en-only { display: none !important; }
+html[lang="en"] .es-only { display: none !important; }
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg-soft);
+  color: var(--ink);
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Marco: nav y pie, iguales a los de la home ── */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 40px; background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 50;
+}
+nav .logo, footer .logo {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 18px; color: var(--ink); letter-spacing: -0.3px;
+}
+nav .logo span, footer .logo span { color: var(--ink-muted); font-weight: 400; }
+nav .logo a, footer .logo a { color: inherit; text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.lang-toggle {
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px; padding: 7px 13px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--white);
+  color: var(--ink); text-decoration: none; cursor: pointer;
+}
+.lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.lang-toggle .dim { opacity: 0.35; }
+.nav-cta {
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+  padding: 10px 18px; border-radius: 10px;
+  background: var(--accent); color: var(--white); text-decoration: none;
+}
+.nav-cta:hover { background: var(--accent-deep); }
+
+footer { background: var(--bg); border-top: 1px solid var(--line); padding: 40px; margin-top: 80px; }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; display: flex; gap: 18px;
+  align-items: center; justify-content: space-between; flex-wrap: wrap;
+  font-size: 14px; color: var(--ink-muted);
+}
+footer a { color: var(--ink-muted); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+/* ── Cuerpo de la página ── */
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+.hero { background: var(--bg); padding: 72px 24px 64px; text-align: center; }
+.eyebrow {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent);
+  display: block; margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: clamp(30px, 4.6vw, 46px); line-height: 1.15;
+  margin: 0 auto 20px; max-width: 20ch; color: var(--ink); letter-spacing: -0.6px;
+}
+h1 em { font-style: normal; color: var(--accent); }
+.lead { font-size: 18px; color: var(--ink-muted); max-width: 56ch; margin: 0 auto; }
+
+h2 {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: clamp(23px, 3vw, 30px); line-height: 1.25;
+  margin: 56px 0 16px; color: var(--ink); letter-spacing: -0.3px;
+}
+h3 {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 18px; margin: 32px 0 8px; color: var(--ink);
+}
+p { margin: 0 0 18px; }
+main { padding-top: 8px; }
+
+.card {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 16px; padding: 26px 28px; margin: 22px 0;
+  box-shadow: var(--shadow-sm);
+}
+.card h3 { margin-top: 0; }
+
+ul.checks { list-style: none; padding: 0; margin: 18px 0; }
+ul.checks li {
+  position: relative; padding-left: 30px; margin-bottom: 12px;
+}
+ul.checks li::before {
+  content: '✓'; position: absolute; left: 0; top: 0;
+  color: var(--accent); font-weight: 700;
+}
+
+.steps { counter-reset: paso; list-style: none; padding: 0; margin: 24px 0; }
+.steps li { counter-increment: paso; position: relative; padding-left: 52px; margin-bottom: 26px; }
+.steps li::before {
+  content: counter(paso, decimal-leading-zero);
+  position: absolute; left: 0; top: 2px;
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;
+  color: var(--white); background: var(--accent);
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps li strong { display: block; margin-bottom: 4px; }
+
+.cta-box {
+  background: var(--bg); border-radius: 18px;
+  padding: 40px 32px; text-align: center; margin: 56px 0 0;
+}
+.cta-box h2 { margin-top: 0; }
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 15px 30px; border-radius: 12px;
+  background: var(--accent); color: var(--white);
+  font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700;
+  text-decoration: none; box-shadow: var(--shadow-sm);
+}
+.btn:hover { background: var(--accent-deep); }
+.note { font-size: 13.5px; color: var(--ink-muted); margin-top: 14px; }
+
+.precio {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  font-family: 'Montserrat', sans-serif; margin-bottom: 10px;
+}
+.precio .n { font-size: 34px; font-weight: 700; color: var(--ink); letter-spacing: -1px; }
+.precio .u { font-size: 13.5px; color: var(--ink-muted); font-weight: 600; }
+
+/* Enlaces entre las páginas: sin esto cada una sería un callejón sin salida,
+   que es justo lo que hoy le pasa a la web (2 páginas, 1 enlace interno). */
+.mas { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 20px 0 0; }
+.mas a {
+  display: block; padding: 16px 18px; border: 1px solid var(--line);
+  border-radius: 12px; text-decoration: none; color: var(--ink);
+  background: var(--white);
+}
+.mas a:hover { border-color: var(--accent); }
+.mas a strong { display: block; font-family: 'Montserrat', sans-serif; font-size: 14.5px; margin-bottom: 3px; }
+.mas a span { font-size: 13px; color: var(--ink-muted); }
+
+.breadcrumb { font-size: 13px; color: var(--ink-muted); padding: 18px 0 0; }
+.breadcrumb a { color: var(--ink-muted); }
+
+@media (max-width: 720px) {
+  nav { padding: 14px 20px; }
+  .hero { padding: 52px 20px 44px; }
+  footer { padding: 32px 20px; }
+  .card { padding: 22px 20px; }
+}
