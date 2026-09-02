@@ -1456,39 +1456,74 @@
     font-size: 12px;
     margin-left: 6px;
   }
-  .booking-embed {
+  .booking-card {
     position: relative;
-    max-width: 680px;
+    max-width: 480px;
     margin: 0 auto;
+    padding: 40px 36px 34px;
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 18px;
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
   }
-  .booking-embed iframe {
-    display: block;
-    width: 100%;
-    min-width: 320px;
-    height: 700px;
-    border: 0;
+  .booking-card-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+  }
+  .booking-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+  .booking-card-text {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0 auto 24px;
+    max-width: 34ch;
+  }
+  .booking-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 15px 30px;
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .booking-card-btn:hover {
+    background: var(--accent-deep);
+    transform: translateY(-2px);
+  }
+  .booking-card-btn svg { transition: transform 0.2s; }
+  .booking-card-btn:hover svg { transform: translateX(4px); }
+  .booking-card-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    opacity: 0.75;
   }
   @media (max-width: 600px) {
-    .booking-embed iframe { height: 620px; }
+    .booking-card { padding: 32px 22px 28px; }
   }
-  .booking-fallback {
-    display: inline-block;
-    position: relative;
-    margin-top: 18px;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--ink-muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .booking-fallback:hover { color: var(--accent); border-color: var(--accent); }
   .final-cta-meta {
     margin-top: 28px;
     font-family: 'Montserrat', sans-serif;
@@ -1751,6 +1786,10 @@ a.cite-name:hover { opacity: 0.7; }
 .service-cta:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .service-cta--primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .service-cta--primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+/* Enlace secundario de la tarjeta: la de CV Exprés saltaba directa a Stripe
+   y no había forma de leer qué compras antes de pagar. */
+.service-link { display: block; text-align: center; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--ink-muted); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
+.service-link:hover { color: var(--accent); border-bottom-color: var(--accent-soft); }
 @media (max-width: 720px) {
   .services { padding: 72px 22px; }
   .services-grid { gap: 20px; }
@@ -2272,12 +2311,18 @@ a.cite-name:hover { opacity: 0.7; }
           <li class="en-only">Tailored cover letter</li>
           <li class="es-only">Audit de LinkedIn</li>
           <li class="en-only">LinkedIn audit</li>
+          <li class="es-only">En español y en inglés — te llevas las dos versiones</li>
+          <li class="en-only">In Spanish and English — you get both versions</li>
           <li class="es-only">Acceso inmediato al editor tras pagar</li>
           <li class="en-only">Instant editor access after payment</li>
         </ul>
         <a href="https://buy.stripe.com/7sY4gzbiM2pyaribXR8AE0a" class="service-cta" target="_blank" rel="noopener">
           <span class="es-only">Comprar ahora →</span>
           <span class="en-only">Buy now →</span>
+        </a>
+        <a href="https://pathwaycareercoach.com/cv-express.html" class="service-link" target="_blank" rel="noopener">
+          <span class="es-only">Ver cómo funciona</span>
+          <span class="en-only">See how it works</span>
         </a>
       </div>
 
@@ -2397,19 +2442,30 @@ a.cite-name:hover { opacity: 0.7; }
   <p class="es-only">Agenda tu llamada gratis de 30 minutos directamente aquí abajo.</p>
   <p class="en-only">Book your free 30-minute call right below.</p>
 
-  <div class="booking-embed">
-    <iframe
-      src="https://scheduler.zoom.us/micaela-jairedin/micaelajairedin-call"
-      title="Agenda tu llamada gratis · Book your free call"
-      loading="lazy"
-      allow="camera; microphone; fullscreen"></iframe>
+  <!-- Tarjeta de reserva.
+       Zoom Scheduler NO se deja incrustar: responde con cabeceras que impiden
+       el iframe, así que el calendario salía como un recuadro vacío. En vez de
+       dejar un hueco en blanco, la reserva se presenta como una tarjeta con su
+       botón, que abre la agenda en una pestaña nueva. Siempre funciona. -->
+  <div class="booking-card">
+    <div class="booking-card-icon" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>
+        <path d="M9 14.5l2 2 4-4"/>
+      </svg>
+    </div>
+    <div class="booking-card-title es-only">Llamada de 30 minutos, sin costo</div>
+    <div class="booking-card-title en-only">A 30-minute call, free</div>
+    <p class="booking-card-text es-only">Elige el día y la hora que te venga bien. Te llega la invitación al correo con el enlace de la videollamada.</p>
+    <p class="booking-card-text en-only">Pick whatever day and time suits you. You'll get an email invite with the video call link.</p>
+    <a href="https://scheduler.zoom.us/micaela-jairedin/micaelajairedin-call" class="booking-card-btn" target="_blank" rel="noopener">
+      <span class="es-only">Ver horarios disponibles</span>
+      <span class="en-only">See available times</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <div class="booking-card-note es-only">Se abre en una pestaña nueva</div>
+    <div class="booking-card-note en-only">Opens in a new tab</div>
   </div>
-  <!-- Fallback: si el navegador o Zoom bloquean el iframe, el visitante sigue
-       teniendo un camino claro para reservar. Se muestra siempre. -->
-  <a href="https://scheduler.zoom.us/micaela-jairedin/micaelajairedin-call" class="booking-fallback" target="_blank" rel="noopener">
-    <span class="es-only">¿No ves el calendario? Abrir la agenda en una pestaña nueva →</span>
-    <span class="en-only">Calendar not loading? Open the booking page in a new tab →</span>
-  </a>
   <div class="final-cta-meta">
     <span class="es-only">SIN COMPROMISO · 30 MIN · ESPAÑOL O INGLÉS</span>
     <span class="en-only">NO COMMITMENT · 30 MIN · SPANISH OR ENGLISH</span>
