@@ -1456,6 +1456,39 @@
     font-size: 12px;
     margin-left: 6px;
   }
+  .booking-embed {
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .booking-embed iframe {
+    display: block;
+    width: 100%;
+    min-width: 320px;
+    height: 700px;
+    border: 0;
+  }
+  @media (max-width: 600px) {
+    .booking-embed iframe { height: 620px; }
+  }
+  .booking-fallback {
+    display: inline-block;
+    position: relative;
+    margin-top: 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .booking-fallback:hover { color: var(--accent); border-color: var(--accent); }
   .final-cta-meta {
     margin-top: 28px;
     font-family: 'Montserrat', sans-serif;
@@ -1849,7 +1882,7 @@ a.cite-name:hover { opacity: 0.7; }
         <p class="en-only">Career mentor and <strong>certified ontological coach</strong>. I've spent <strong>17+ years in HR</strong> — as a department lead, area manager and senior recruiter, running <strong>800+ selection processes</strong> across Europe and LATAM at companies like <strong>Amazon</strong>.</p>
         <p class="es-only">Vi cientos de perfiles capaces quedarse fuera — no por falta de experiencia, sino por cómo estaban posicionados. Mi trabajo hoy es resolver exactamente eso, trabajando en <strong>español o inglés</strong> según lo que necesites.</p>
         <p class="en-only">I saw hundreds of capable profiles get left out — not for lack of experience, but for how they were positioned. My job today is solving exactly that, in <strong>Spanish or English</strong>, whichever you need.</p>
-        <div class="authority-badge">No es motivación. Es estrategia.</div>
+        <div class="authority-badge"><span class="es-only">No es motivación. Es estrategia.</span><span class="en-only">This isn't motivation. It's strategy.</span></div>
       </div>
     </div>
   </div>
@@ -2192,7 +2225,7 @@ a.cite-name:hover { opacity: 0.7; }
       </div>
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
-        <blockquote>Everything was great. We are still working together, but Micaela\'s advice was very helpful, and she went above and beyond to make sure I got the best advice. I would definitively recommend her and hire her again.</blockquote>
+        <blockquote>Everything was great. We are still working together, but Micaela's advice was very helpful, and she went above and beyond to make sure I got the best advice. I would definitively recommend her and hire her again.</blockquote>
         <cite>
           <div class="testimonial-avatar">JP</div>
           <div class="cite-info">
@@ -2364,8 +2397,19 @@ a.cite-name:hover { opacity: 0.7; }
   <p class="es-only">Agenda tu llamada gratis de 30 minutos directamente aquí abajo.</p>
   <p class="en-only">Book your free 30-minute call right below.</p>
 
-  <div class="calendly-inline-widget" data-url="https://calendly.com/mmicaela-jairedin/30min?hide_gdpr_banner=1&primary_color=8e7676" style="min-width:320px;height:540px;margin:0 auto;max-width:680px;"></div>
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <div class="booking-embed">
+    <iframe
+      src="https://scheduler.zoom.us/micaela-jairedin/micaelajairedin-call"
+      title="Agenda tu llamada gratis · Book your free call"
+      loading="lazy"
+      allow="camera; microphone; fullscreen"></iframe>
+  </div>
+  <!-- Fallback: si el navegador o Zoom bloquean el iframe, el visitante sigue
+       teniendo un camino claro para reservar. Se muestra siempre. -->
+  <a href="https://scheduler.zoom.us/micaela-jairedin/micaelajairedin-call" class="booking-fallback" target="_blank" rel="noopener">
+    <span class="es-only">¿No ves el calendario? Abrir la agenda en una pestaña nueva →</span>
+    <span class="en-only">Calendar not loading? Open the booking page in a new tab →</span>
+  </a>
   <div class="final-cta-meta">
     <span class="es-only">SIN COMPROMISO · 30 MIN · ESPAÑOL O INGLÉS</span>
     <span class="en-only">NO COMMITMENT · 30 MIN · SPANISH OR ENGLISH</span>
